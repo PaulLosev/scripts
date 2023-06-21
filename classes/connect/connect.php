@@ -9,14 +9,14 @@ error_reporting(E_ALL);
 if (isset($_GET['public']) === true) {
 
     // public game
-    $mDb = new PDO('mysql:host=tpt-web4-db;dbname=promo_transperfectbowl', 'promo_transperfectbowl', 'gSE-T/349iq3Pvx');
+    $mDb = new PDO('mysql:host=;dbname=', '', '');
 } else if (isset($_GET['internal']) === true) {
 
     // internal game
-    $mDb = new PDO('mysql:host=10.10.23.220;dbname=centralized', 'tptdbuser', 'tptdb2022');
+    $mDb = new PDO('mysql:host=;dbname=', '', '');
     $bdcheck = 'internal db';
 } else {
 
     // clients game
-    $mDb = new PDO('mysql:host=tpt-web4-db;dbname=promo', 'promo', 'c,wiejF83V.3');
+    $mDb = new PDO('mysql:host=;dbname=', '', '');
 }// end if

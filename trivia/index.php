@@ -22,4 +22,3 @@
     // set project footer
     $htmlBuild->projectFooter();
     // endregion
-    print_r('test');

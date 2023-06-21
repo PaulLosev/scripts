@@ -17,9 +17,7 @@
                     <!-- container error code -->
                     <span class="errorCode">invalid email format</span>
                     <!-- container input -->
-                    <input type="email" name="uemail" id="uemail" 
-                           placeholder="start typing.."
-                           onkeyup="emailValid.getEmailInputData(this.value)" />
+                    <input type="email" name="uemail" id="uemail" placeholder="start typing.." />
                     <!-- container info print -->       
                     <div class="infoContainer"></div>
                   </div>

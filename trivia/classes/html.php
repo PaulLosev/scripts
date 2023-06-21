@@ -36,7 +36,6 @@
                             <script src="//code.jquery.com/jquery-1.12.4.js"></script>
                             <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-                            <script src="/trivia/js/emailClass.js?' . time(). '"></script>
                         </head>
                         <body>
                         <div id="projectReturnContainer">' . PHP_EOL;
@@ -51,7 +50,8 @@
         public function projectFooter() {
             // return project footer
             echo '</div>
-                </body>
+                </body>                            
+                <script src="/trivia/js/emailClass.js?' . time(). '"></script>
               </html>' . PHP_EOL;
             // endregion
         }// end projectFooter()

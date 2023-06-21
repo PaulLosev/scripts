@@ -1,0 +1,9 @@
+
+#Enable rewrite engine
+RewriteEngine On
+#set conditions
+RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule ^([a-zA-z]+)$ index.php?lang=$1 [QSA,NC,L]
+RewriteRule (\w+) index.php?lang=$1 [QSA,NC,L]
+#exclude connected files
+RewriteRule ^/(.+?\.(?:jpeg|gif|bmp|png|tiff|css|js))$ /$1 [NC,L]

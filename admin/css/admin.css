@@ -1,0 +1,733 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body, html {
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    background: #17202A;
+    color: white;
+}
+
+.wpapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    float: left;
+}
+
+/* region main container body */
+
+.headerContainer {
+    position: relative;
+    width: 100%;
+    float: left;
+    height: 3vw;
+}
+
+.spinnerContainer {
+    position: relative;
+    width: 6vw;
+    height: 3vw;
+    float: left;
+    text-align: center;
+    z-index: 6;
+}
+
+.actualSystemSpinner {
+    width: 3vw;
+    display: none;
+}
+
+.functionComplete {
+    position: relative;
+    padding: .9vw 4vw;
+    border: none;
+    float: right;
+}
+
+.notificationBody {
+    padding: .9vw 4vw;
+    border-radius: 5px;
+    font-size: 1.4vw;
+    font-weight: 400;
+    font-family: 'Archivo Black', sans-serif;
+    display: none;
+    z-index: 6;
+}
+
+/* endregion */
+
+/* region main container body */
+
+.contentBody {
+    position: relative;
+    width: 100%;
+    float: left;
+    height: auto;
+    margin-bottom: 10vw;
+}
+
+.navigation {
+    position: relative;
+    width: 30%;
+    margin: 6vw auto!important;
+    font-size: 2.3vw;
+    font-weight: 400;
+    font-family: 'Archivo Black', sans-serif;
+    transform: rotate(-2deg);
+}
+
+.otherContainer {
+    position: relative;
+    width: 60%;
+    margin: 6vw auto!important;
+    font-size: 2.3vw;
+    font-weight: 400;
+    font-family: 'Archivo Black', sans-serif;
+    transform: rotate(-2deg);
+}
+
+.navigation ul {
+    list-style: none;
+    color: white;
+    transition: .2s;
+}
+
+.navigation li {
+    width: 35vw;
+    transition: .2s;
+}
+
+.navigation li a {
+    color: white;
+    padding: .7vw;
+    text-decoration: none;
+    line-height: 1.8;
+}
+
+.totalGrid p span:hover,
+.goBack:hover,
+.closeAllModal:hover,
+.promoBlockTrigger:hover,
+.navigation li:hover {
+    background-image: linear-gradient(to right, #F1C40F, #F39C12);
+}
+
+.totalGrid p span:hover,
+.goBack:hover,
+.closeAllModal:hover,
+.navigation li:hover,
+.navigation li a:hover {
+    color: #1C2833;
+}
+
+.letterDecoration {
+    position: fixed;
+    top: 5vw;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #1C2833;
+    font-size: 27vw;
+    line-height: .8;
+    font-family: 'Archivo Black', sans-serif;
+    opacity: .4;
+    transform: rotate(-2deg)
+}
+
+.promoBlockTrigger {
+    color: white;
+    padding: .2vw;
+    background: none;
+    border: none;
+    text-decoration: none;
+    line-height: 1.8;
+    transition: .2s;
+    font-size: 2.3vw;
+    font-family: 'Archivo Black', sans-serif;
+    transform: rotate(-2deg);
+    outline: none;
+    cursor: pointer;
+}
+
+.goBack {
+    position: relative;
+    top: 4vw;
+    left: 1vw;
+    width: 8vw;
+    padding: 1vw 3vw;
+    font-size: 1.4vw;
+    font-weight: 400;
+    font-family: 'Archivo Black', sans-serif;
+    transform: rotate(-4deg);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.whereAmI {
+    position: relative;
+    top: 3.6vw;
+    left: 3vw;
+    width: 36vw;
+    padding: 1vw .3vw;
+    font-size: 2vw;
+    font-weight: 400;
+    font-family: 'Archivo Black', sans-serif;
+    transform: rotate(-4deg);
+    color: #1C2833;
+    background-image: linear-gradient(to right, #F1C40F, #F39C12);
+}
+
+.totalGrid {
+    position: relative;
+    width: 42%;
+    height: auto!important;
+    margin: 2vw 1vw;
+    float: left;
+    padding: .5vw;
+    border-bottom: 1px solid #F39C12;
+}
+
+.totalGrid p {
+    font-size: 1.6vw;
+}
+
+.totalGrid h3 {
+    font-size: 2vw;
+}
+
+.totalGrid a {
+    color: white;
+    text-decoration: none;
+}
+
+.totalGrid p span {
+    color: #F39C12;
+    transition: .2s;
+}
+
+.totalCircle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6vw;
+    height: 6vw;
+    border-radius: 50%;
+    color: #1C2833;
+    margin: 1vw;
+    background-image: linear-gradient(to right, #F1C40F, #F39C12);
+}
+
+/* endregion */
+
+/* region footer */
+
+.footer {
+    position: relative;
+    width: 100%;
+    height: 3vw;
+    float: left;
+}
+
+/* endregion */
+
+/* efx css */
+
+.shine {
+    text-shadow: 0px 0px 20px #F1C40F;
+    color: #F1C40F;
+}
+
+.greenConfirm {
+    background: #239B56;
+    z-index: 6;
+}
+
+.redConfirm {
+    background: red;
+    z-index: 6;
+}
+
+/* Set Winners */
+
+.setWinnerContainer {
+    position: relative;
+    width: 100%;
+    height: 20vw;
+    margin: 12vw auto!important;
+}
+
+.setTheWinnerFalse,
+.setTheWinner {
+    position: relative;
+    float: left;
+    width: 13vw;
+    margin-right: 1.2vw;
+    height: 13vw;
+    border-radius: 30%;
+    border: 1px solid #F1C40F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #273746;
+    -webkit-box-shadow: inset 1px 2px 17px 0px rgba(0,0,0,0.82);
+    box-shadow: inset 1px 2px 17px 0px rgba(0,0,0,0.82);
+    transition: .2s;
+    cursor: pointer;
+    text-shadow: 0px 0px 1px #F1C40F;
+}
+
+.setTheWinnerFalse {
+    cursor: inherit;
+}
+
+.setTheWinnerFalse:hover,
+.setTheWinner:hover {
+    box-shadow: 1px 2px 17px 0px rgba(0,0,0,0.82);
+    background-image: linear-gradient(to right, #F1C40F, #F39C12);
+}
+
+.disabled {
+    box-shadow: none;
+    background-image: linear-gradient(to right, #F1C40F, #F39C12);
+}
+
+.setTheWinnerFalse p,
+.setTheWinner p {
+    font-size: 1vw;
+    position: absolute;
+    bottom: 4vw;
+}
+
+.setQuarter {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(52,73,94,.5);
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.setQuarterModalBody {
+    position: relative;
+    width: 80vw;
+    padding: 2vw;
+    height: 40vw;
+    overflow-x: hidden;
+    color: white;
+    z-index: 5;
+    background: #17202A;
+    border: 1px solid #1C2833;
+}
+
+.setQuarterBodyContainer {
+    position: relative;
+    width: auto;
+    height: auto;
+}
+
+.closeAllModal {
+    position: relative;
+    fonr-size: 1vw;
+    float: right;
+    padding: 0 1vw;
+    color: white;
+    font-size: 1vw;
+    font-family: 'Archivo Black', sans-serif;
+    transform: rotate(-2deg);
+    z-index: 1;
+    cursor: pointer;
+}
+
+.submitData:hover,
+.closeAllModal:hover {
+    background-image: linear-gradient(to right, #F1C40F, #F39C12);
+}
+
+.submitData:hover,
+.closeAllModal:hover{
+    color: #1C2833;
+}
+
+
+.letterDecorationModal {
+    position: relative;
+    width: 100%;
+}
+
+.letterDecorationModal {
+    position: fixed;
+    top: 5vw;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #1C2833;
+    font-size: 27vw;
+    line-height: .8;
+    font-family: 'Archivo Black', sans-serif;
+    opacity: .4;
+    transform: rotate(-2deg);
+    z-index: 1;
+}
+
+.leftContainer {
+    position: relative;
+    float: left;
+    width: 39.7vw;
+    height: auto;
+    transform: rotate(-2deg);
+}
+
+.leftContainerHeader p {
+    position: relative;
+    font-size: 1vw;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 700;
+    margin-bottom: 3vw;
+    color: #F39C12;
+}
+
+.leftContainerHeader {
+    font-size: 1.6vw;
+    font-weight: 400;
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.leftContainerBody {
+    position: relative;
+    float: left;
+    width: 100%;
+}
+
+.theLeftGridLineContaner {
+    position: relative;
+    float: left;
+    width: 15vw;
+    height: auto;
+}
+
+.theLeftSideCloseInputsContaner,
+.theLeftSideInputsContaner {
+    position: relative;
+    top: 6vw;
+    float: left;
+    width: 20vw;
+    height: auto;
+    padding: 1vw;
+    font-size: .8vw;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 300;
+    line-height: 1.2;
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.1);
+}
+
+.theLeftSideCloseInputsContaner p,
+.theLeftSideInputsContaner p {
+    margin: .6vw auto!important;
+}
+
+.leftLineGrid {
+    width: 1.7vw;
+    height: 1.4vw;
+    margin: .35vw auto!important;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 300;
+    background: none;
+    border: none;
+    border-radius: 30%;
+    font-size: 1vw;
+    text-align: center;
+    color: rgba(255,255,255,.6);
+    outline: none;
+    padding: .5vw;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,.1);
+}
+
+.rightLineGrid {
+    width: 1.7vw;
+    height: 1.4vw;
+    display: inline-block;
+    margin-right: .3vw;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 300;
+    background: none;
+    border: none;
+    border-radius: 30%;
+    font-size: 1vw;
+    text-align: center;
+    color: rgba(255,255,255,.6);
+    outline: none;
+    padding: .5vw;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,.1);
+}
+
+.rightLineGrid:hover,
+.leftLineGrid:hover {
+    background: rgba(255,255,255,.4);
+}
+
+.pickedResults {
+    position: absolute;
+    top: 15vw;
+    width: auto;
+    padding: 1vw;
+    height: auto;
+}
+
+.pickedResults h3 {
+    margin: 1vw auto!important;
+    font-size: 2vw;
+}
+
+.roundedResults {
+    position: relative;
+    width: 4vw;
+    height: 4vw;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: .3vw;
+    float: left;
+    color: #1C2833;
+    background: rgba(255,255,255,.8);
+    border: none;
+    outline: none;
+    font-size: 1.6vw;
+    font-weight: 400;
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.submitQuarterWinnerData {
+    margin: 1vw auto!important;
+    text-align: left;
+    width: 10vw;
+    background: none;
+    border: none;
+    font-size: 1.5vw;
+    font-family: 'Archivo Black', sans-serif;
+    color: white;
+    transform: rotate(-2deg);
+    outline: none;
+    transition: .2s;
+    position: absolute;
+    left: 4vw;
+    bottom: 1vw;
+    cursor: pointer;
+}
+
+.submitQuarterWinnerData:hover {
+    color: #1C2833;
+    background-image: linear-gradient(to right, #F1C40F, #F39C12);
+}
+
+.warning {
+    color: #F39C12;
+    font-weight: 400;
+}
+
+.valError {
+    position: relative;
+    width: auto;
+    height: 2vw;
+}
+
+.actualErrorQuaers {
+    color: red;
+    font-size: 1vw;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 300;
+    padding: .3vw;
+    text-align: center;
+    border: 1px solid red;
+    border-radius: 5px;
+    display: none;
+}
+
+/* Set Winners */
+
+/* set random squares module */
+
+.editModal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(52,73,94,.5);
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editModalBody {
+    position: relative;
+    width: 40vw;
+    padding: 2vw;
+    height: auto;
+    overflow-x: hidden;
+    color: white;
+    z-index: 5;
+    background: #17202A;
+    border: 1px solid #1C2833;
+}
+
+.modalBodyContainer {
+    position: relative;
+    width: auto;
+    height: auto;
+}
+
+.closeAllModal {
+    position: relative;
+    fonr-size: 1vw;
+    float: right;
+    padding: 0 1vw;
+    color: white;
+    font-size: 1vw;
+    font-family: 'Archivo Black', sans-serif;
+    transform: rotate(-2deg);
+    z-index: 1;
+    cursor: pointer;
+}
+
+.agreedButton:hover,
+.submitData:hover,
+.closeAllModal:hover {
+    background-image: linear-gradient(to right, #F1C40F, #F39C12);
+}
+
+.submitData:hover,
+.closeAllModal:hover{
+    color: #1C2833;
+}
+
+
+.letterDecorationModal {
+    position: relative;
+    width: 100%;
+}
+
+.letterDecorationModal {
+    position: fixed;
+    top: 5vw;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #1C2833;
+    font-size: 27vw;
+    line-height: .8;
+    font-family: 'Archivo Black', sans-serif;
+    opacity: .4;
+    transform: rotate(-2deg);
+    z-index: 1;
+}
+
+.submitData {
+    margin: 1vw auto!important;
+    text-align: left;
+    width: 10vw;
+    background: none;
+    border: none;
+    font-size: 2vw;
+    font-family: 'Archivo Black', sans-serif;
+    color: white;
+    transform: rotate(-2deg);
+    outline: none;
+    cursor: pointer;
+}
+
+.linkInput {
+    position: relative;
+    margin: 1vw auto!important;
+    width: 97.8%;
+    font-family: 'Poppins', cursive;
+    padding: 1vw .4vw;
+    float: left;
+    font-size: 1vw;
+    border-radius: 5px;
+    border: 1px solid #17202A;
+    background: #1C2833;
+    outline: none;
+    color: #FBFCFC;
+}
+
+/* set random squares module */
+
+.setTeamDonsky {
+    width: 89%;
+}
+
+/* set disabled class */
+
+.disabledSave {
+    margin: 1vw auto !important;
+    text-align: left;
+    width: 10vw;
+    background: none;
+    border: none;
+    font-size: 2vw;
+    font-family: 'Archivo Black', sans-serif;
+    color: white;
+    transform: rotate(-2deg);
+    outline: none;
+}
+
+.usersNotified {
+    position: relative;
+    top: -2vw;
+    font-family: 'Poppins', cursive;
+    background: #239B56;
+    padding: .2vw;
+    color: white!important;
+    border-radius: 5px;
+    font-weight: 300;
+    font-size: .8vw;
+    cursor: help;
+}
+
+/** input number apperance **/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+/** input number apperance **/
+
+/* Game option */
+.dbTracker {
+    position: absolute;
+    left: 2vw;
+    top: 2vw;
+    padding: 1vw 2vw;
+    border: 1px solid rgba(255,255,255,.1);
+    font-size: 1vw;
+    font-weight: 300;
+    color: #F0F3F4;
+    font-family: 'Poppins', cursive;
+    background: #212F3D;
+    z-index: 1;
+}
+
+/* Game option */

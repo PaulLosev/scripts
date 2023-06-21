@@ -1,0 +1,166 @@
+
+.gameFormContainer {
+    position: relative;
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.gameFormBody {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.gameFormBody label {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    float: left;
+    height: 2vw;
+    width: 100%;
+    font-size: 1vw;
+    font-weight: 600;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.validationError {
+    position: absolute;
+    top: -2vw;
+    width: 96%;
+    font-weight: 300;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: .8vw;
+    border-radius: 5px;
+    padding: .6vw;
+    color: white;
+    text-align: center;
+    display: none;
+    text-shadow: 0 0 2px black;
+    background: #C0392B!important;
+}
+
+#formInput {
+    position: relative;
+    width: 94%;
+    padding: .8vw .8vw;
+    margin: .3vw 0;
+    font-size: 1vw;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #fec250;
+    background: rgba(0,0,0,.6);
+    border: 2px solid #fec250;
+    font-family: 'Comfortaa', sans-serif;
+    outline: none;
+}
+
+::placeholder {
+    color: #fec250;
+}
+
+.gameFormControlsContainer {
+    position: relative;
+    width: 100%;
+    height: 3vw;
+    margin: 1vw 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameFormDotsContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: .5vw .5vw;
+}
+
+.formItemsListing {
+    position: relative;
+    width: 2.5vh;
+    height: 2.5vh;
+    margin: 0 .7vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 2px solid #fec250;
+    background: black;
+}
+
+.validated:after {
+    content: '';
+    position: absolute;
+    right: 0px;
+    width: 3vh;
+    height: 3vh;
+    z-index: 0;
+}
+
+.errorCode {
+    border: 2px solid #C0392B!important;
+}
+
+.innerActive {
+    position: relative;
+    width: .8vw;
+    height: .8vw;
+    border-radius: 50%;
+    background: #fec250;
+}
+
+#formSubmit {
+    position: relative;
+    top: -.1vw;
+    background: url('/cup/images/Desktop/Screen 2/btn_next.png') no-repeat center center/cover;
+    cursor: pointer;
+    width: 3.5vw;
+    height: 3.5vw;
+    transition: .2s;
+}
+
+#formEditButton {
+    position: relative;
+    top: -.1vw;
+    background: url('/cup/images/Desktop/Screen 2/btn_prev.png') no-repeat center center/cover;
+    cursor: pointer;
+    width: 3.5vw;
+    height: 3.5vw;
+    transition: .2s;
+    display: none;
+}
+
+#formEditButton:hover {
+    transform: translate(-10px);
+}
+
+#formSubmit:hover {
+    transform: translate(10px);
+}
+
+.gameHintContainer {
+    position: absolute;
+    bottom: -5vw;
+    width: 96%;
+    height: auto;
+    padding: .5vw;
+    background: rgba(0,0,0,.6);
+    border-radius: 5px;
+    display: none;
+}
+
+.gameHintContainer p {
+    font-size: .8vw;
+    font-weight: 300;
+    font-family: 'Comfortaa', sans-serif;
+    color: rgba(255,255,255,06);
+    margin: .4vw 0;
+}

@@ -1,0 +1,284 @@
+.systemCloseUptContainer,
+.systemResetContainer {
+    position: relative;
+    margin: 1vw auto!important;
+    width: 100%;
+    height: 4vw;
+}
+
+.initiateCloseReg,
+.initiateReset {
+    position: relative;
+    width: 30%;
+    float: left;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1vw;
+    color: #2C3E50;
+    cursor: pointer;
+    background-image: linear-gradient(to right, #F1C40F, #F39C12);
+    box-shadow: inset 1px 2px 17px 0px rgba(0,0,0,0.82);
+    text-shadow: 0px 0px 1px #F1C40F;
+    border-radius: 50px;
+    z-index: 10;
+    transition: .2s;
+}
+
+.regModuleClosed {
+    position: relative;
+    width: 30%;
+    float: left;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1vw;
+    color: white;
+    cursor: inherit;
+    background-image: linear-gradient(to right, #A93226, #CD6155);
+    text-shadow: 0px 0px 1px #F1C40F;
+    border-radius: 50px;
+    z-index: 10;
+    transition: .2s;
+}
+
+.initiateCloseReg:hover,
+.initiateReset:hover {
+    color: #1C2833;
+    -webkit-box-shadow: none;
+
+}
+
+.closeUpInitiated,
+.resetInitiated {
+    position: relative;
+    left: -3vw;
+    float: left;
+    height: 100%;
+    width: 68%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1vw;
+    background: none;
+}
+
+.initiated {
+    background: #34495E;
+    color: white;
+    font-family: 'Poppins', cursive;
+    font-weight: 400;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.theLeftSideInputsContaner {
+    font-size: .8vw;
+    position: absolute;
+    top: -14vw;
+    left: -3vw;
+    width: 95%;
+    display: none;
+    background: #1C2833;
+    -webkit-box-shadow: inset 1px 2px 17px 0px rgba(0,0,0,0.82);
+    box-shadow: inset 1px 2px 17px 0px rgba(0,0,0,0.82);
+    z-index: 5;
+}
+
+.theLeftSideCloseInputsContaner::before,
+.theLeftSideInputsContaner::before {
+    content: '';
+    position: absolute;
+    bottom: -.4vw;
+    left: 10vw;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: .4vw .4vw 0 .4vw;
+    border-color: #1C2833 transparent transparent transparent;
+    z-indx: 0;
+}
+
+.theLeftSideCloseInputsContaner {
+    font-size: .8vw;
+    position: absolute;
+    top: -11.5vw;
+    left: -3vw;
+    width: 95%;
+    display: none;
+    background: #1C2833;
+    -webkit-box-shadow: inset 1px 2px 17px 0px rgba(0,0,0,0.82);
+    box-shadow: inset 1px 2px 17px 0px rgba(0,0,0,0.82);
+    z-index: 15;
+}
+
+.theLeftSideCloseInputsContaner a,
+.theLeftSideInputsContaner a {
+    text-decoration: underline;
+    font-size: .8vw;
+}
+
+.theLeftSideCloseInputsContaner p,
+.theLeftSideInputsContaner p {
+    font-size: .8vw;
+}
+
+.deleteUserContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userToDelete {
+    width: 16vw;
+    height: 2vw;
+    background: #1C2833;
+    border: none;
+    border-radius: 5px;
+    font-size: .8vw;
+    color: #F39C12;
+    outline: none;
+    padding: .5vw;
+    text-shadow: 0px 0px 1px #F1C40F;
+    margin: 1vw auto!important;
+    border: 1px solid rgba(255,255,255,.1);
+    font-weight: 300;
+    font-family: 'Poppins', cursive;
+}
+
+.resetPass,
+.deleteUser {
+    position: relative;
+    float: left;
+    padding: .9vw 1.9vw;
+    width: 7vw;
+    background: #1C2833;
+    border: none;
+    border-radius: 5px;
+    font-size: .8vw;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    text-shadow: 0px 0px 1px #F1C40F;
+    margin: 1vw auto!important;
+    border: 1px solid rgba(255,255,255,.1);
+    font-weight: 300;
+    font-family: 'Poppins', cursive;
+    transition: .2s;
+}
+
+.setTeam:hover,
+.setColor:hover,
+.resetPass:hover,
+.deleteUser:hover {
+    background: #239B56;
+}
+
+.greenConfirm {
+    background: #239B56;
+    z-index: 6;
+}
+
+.redConfirm {
+    background: red;
+    z-index: 6;
+}
+
+.userToChangeColor {
+    width: 12vw;
+    height: 2vw;
+    background: #1C2833;
+    border: none;
+    border-radius: 5px;
+    font-size: .8vw;
+    color: #F39C12;
+    outline: none;
+    padding: .5vw;
+    text-shadow: 0px 0px 1px #F1C40F;
+    margin: 1vw auto!important;
+    border: 1px solid rgba(255,255,255,.1);
+    font-weight: 300;
+    font-family: 'Poppins', cursive;
+}
+
+.teamName {
+    width: 20vw;
+    height: 2vw;
+    background: #1C2833;
+    border: none;
+    border-radius: 5px;
+    font-size: .8vw;
+    color: #F39C12;
+    outline: none;
+    padding: .5vw;
+    text-shadow: 0px 0px 1px #F1C40F;
+    margin: 1vw auto!important;
+    border: 1px solid rgba(255,255,255,.1);
+    font-weight: 300;
+    font-family: 'Poppins', cursive;
+}
+
+.selectTeam {
+    width: 20.1vw;
+    height: 3.1vw;
+    background: #1C2833;
+    border: none;
+    padding: .3vw;
+    border-radius: 5px;
+    font-size: .8vw;
+    color: #F39C12;
+    outline: none;
+    text-shadow: 0px 0px 1px #F1C40F;
+    margin: 1vw auto!important;
+    border: 1px solid rgba(255,255,255,.1);
+    font-weight: 300;
+    font-family: 'Poppins', cursive;
+}
+
+.userColor {
+    border: 1px solid rgba(255,255,255,.1);
+    outline: none;
+    background: #1C2833;
+    height: 3vw;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.setTeam,
+.setColor {
+    position: relative;
+    float: left;
+    padding: .9vw 1.4vw;
+    width: 7vw;
+    background: #1C2833;
+    border: none;
+    border-radius: 5px;
+    font-size: .8vw;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    text-shadow: 0px 0px 1px #F1C40F;
+    margin: 1vw auto!important;
+    border: 1px solid rgba(255,255,255,.1);
+    font-weight: 300;
+    font-family: 'Poppins', cursive;
+    transition: .2s;
+}
+
+.logoutFunction {
+    width: 17.3vw;
+    height: 3.1vw;
+    background: #1C2833;
+    border: none;
+    border-radius: 5px;
+    font-size: .8vw;
+    color: #F39C12;
+    outline: none;
+    text-shadow: 0px 0px 1px #F1C40F;
+    margin: 1vw auto!important;
+    border: 1px solid rgba(255,255,255,.1);
+    font-weight: 300;
+    font-family: 'Poppins', cursive;
+}

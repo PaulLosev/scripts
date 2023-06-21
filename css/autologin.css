@@ -1,0 +1,80 @@
+
+.userAutoLoggedInBody {
+    position: relative;
+    top: 5vw;
+    width: 45%;
+    height: auto;
+    background: #239B56;
+    margin: auto;
+    padding: 2vw;
+    text-align: center;
+    border-radius: 15px;
+    -webkit-box-shadow: 2px 4px 5px -4px rgb(0 0 0 / 75%);
+    -moz-box-shadow: 2px 4px 5px -4px rgba(0,0,0,0.75);
+    box-shadow: 2px 4px 5px -4px rgb(0 0 0 / 75%);
+}
+
+.userAutoLoggedInBody h2 {
+    font-size: 2vw;
+    margin: 1vw;
+    color: white;
+}
+
+.userAutoLoggedInBody p {
+    font-size: 1vw;
+    color: white;
+    margin: .8vw auto;
+    line-height: 1.1;
+}
+
+.userAutoLoggedInBody button {
+    position: relative;
+    margin-top: 1.5vw;
+    display: inline-block;
+    width: 50%;
+    padding: 1.1vw 2.93vw;
+    font-size: 1vw;
+    font-family: 'Galano Grotesque',sans-serif;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none!important;
+    color: #fff!important;
+    border: none;
+    border-radius: 0.2vw;
+    box-shadow: none;
+    outline: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: .2s;
+    background: #455B8E;
+}
+
+.userAutoLoggedInBody button:hover {
+    background: rgb(51,68,107);
+}
+
+.ErrorUser {
+    background: #cc0000;
+}
+
+@media (max-width: 1160px) {
+    .userAutoLoggedInBody {
+        width: 65%;
+    }
+
+    .userAutoLoggedInBody h2 {
+        font-size: 3vw;
+    }
+
+    .userAutoLoggedInBody p {
+        font-size: 2vw;
+    }
+
+    .userAutoLoggedInBody button {
+        margin-top: 4vw;
+        width: 50%;
+        padding: 2vw 2.93vw;
+        font-size: 3vw;
+    }
+}

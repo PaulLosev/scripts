@@ -1,0 +1,58 @@
+
+Promo Game Tokens and common usage
+
+Representative : ?email=tpuser@transperfect.com
+If email provided, a representative's input on the form will be hidden and the representative will be assigned.
+
+Sales Report : ?salesreport=tpuser@transperfect.com
+If no user been provided for the sales report then all system users will be on the list.
+
+the CMS login token #granted
+the url should look like: https://promo.transperfect.com/#granted
+after the password should be entered. Default pass is MarComm123.
+The pasword can be changed at any time by this link: https://promo.transperfect.com/admin/settings/
+
+For testing purposes the system has a logout token : https://promo.transperfect.com/?logout
+users not able to see it with out the token.
+
+3 types of game (with links)
+
+Clients
+  UI: TransPerfect Squares Promotion
+  CMS: https://promo.transperfect.com/admin/
+  -----------------------------------------------------------------------------------------
+
+Public
+  UI: TransPerfect Squares Promotion
+  CMS: https://promo.transperfect.com/admin/settings/?public
+  -----------------------------------------------------------------------------------------
+
+Internal
+  UI: TransPerfect Squares Promotion
+  CMS: https://promo.transperfect.com/admin/settings/?internal
+  -----------------------------------------------------------------------------------------
+
+ACTIVE TOKENS FOR THE 3
+Clients
+  representative: https://promo.transperfect.com/?email=tpuser@transperfect.com
+  report:  https://promo.transperfect.com/?salesreport=tpuser@transperfect.com
+  gets all users related to the representative email
+  -----------------------------------------------------------------------------------------
+
+Public
+  representative: https://promo.transperfect.com/?public&email=tpuser@transperfect.com
+  report:  https://promo.transperfect.com/?public&salesreport=tpuser@transperfect.com
+  gets all users related to the representative email
+  -----------------------------------------------------------------------------------------
+
+Internal
+  representative: https://promo.transperfect.com/?internal&email=tpuser@transperfect.com
+  report:  https://promo.transperfect.com/?internal&salesreport=tpuser@transperfect.com
+  gets all users related to the representative email
+  -----------------------------------------------------------------------------------------
+
+LOGOUT METHOD FOR THE 3 (for testing purposes)
+For testing purposes the logout token:
+  https://promo.transperfect.com/?logout
+  to register multiple users to test the game use this token
+  -----------------------------------------------------------------------------------------

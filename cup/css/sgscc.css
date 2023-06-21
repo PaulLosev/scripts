@@ -1,0 +1,261 @@
+
+:root {
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.mainGamesWrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: center center url('/cup/images/Desktop/Screen 1/bg.png') no-repeat;
+    background-size: 100% 100%
+}
+
+.leftPromotionalContainer {
+    position: relative;
+    width: 50%;
+    display: block;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gamePlayContainer:after {
+    content: '';
+    background: url('/cup/images/Desktop/Screen 1/overlap.png') no-repeat center center/cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 122vh;
+    height: 100vh;
+    z-index: 0;
+}
+
+.gameRulesContainer {
+    position: relative;
+    top: -14vw;
+    left: -3vw;
+    font-family: 'Comfortaa', sans-serif;
+    text-shadow: 0 0 2px black;
+    width: 70%;
+    height: auto;
+    padding: 1vw;
+    background: rgba(0,0,0,.6);
+    border: 2px solid #fec250;
+    color: #fec250;
+    border-radius: 10px;
+}
+
+.leftPromotionalContainer h2 {
+    font-size: 1.8vw;
+    font-weight: 600;
+}
+
+.leftPromotionalContainer p {
+    margin: .9vw;
+    font-weight: 100;
+    font-size: .8vw;
+    line-height: 1.4;
+}
+
+.gamePlayContainer {
+    position: relative;
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s;
+}
+
+.gamePlayBody {
+    position: relative;
+    width: 80%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.gamePlayHeader {
+    position: absolute;
+    top: 5vw;
+    width: 90%;
+    height: auto;
+    margin: 2vw 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gamePlayHeader img {
+    position: relative;
+    width: 45%;
+    height: auto;
+    transition: .3s;
+}
+
+.gamePlayPlayground {
+    position: relative;
+    top: 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.titlePageContainer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.promoBoxContainer {
+    position: relative;
+    width: 60%;
+    padding: .8vw .8vw;
+    margin: .3vw 0;
+    font-size: .8vw;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #fec250;
+    background: rgba(0,0,0,.6);
+    border: 2px solid #fec250;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.titlePageContainer p {
+    position: relative;
+    height: auto;
+    font-family: 'Comfortaa', sans-serif;
+    line-height: 1.4;
+    font-weight: 300;
+    font-size: 1vw;
+    color: #fec250;
+}
+
+.playButton {
+    position: relative;
+    margin-top: 2vw;
+    width: 100%;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.playButton img {
+    width: 12vw;
+    height: auto;
+}
+
+.playButton:hover {
+    transform: scale(1.1);
+}
+
+.resultPageContainer {
+    position: relative;
+    top: 3vw;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.groupOfThreeContainer {
+    position: relative;
+    padding: 1vw 0;
+    float: left;
+    width: 50%;
+    height: auto;
+    background: url('/cup/images/Desktop/Screen 4/group_container.png') center center no-repeat;
+    background-size: 80% auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.groupOfOneContainer {
+    position: relative;
+    padding: 3vw 0;
+    float: right;
+    width: 49%;
+    height: auto;
+    background: url('/cup/images/Desktop/Screen 4/win_badge.png') center center no-repeat;
+    background-size: 75% auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.goodLuckThumbContainer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.goodLuckThumbContainer h2 {
+    font-size: 1.4vw;
+    font-weight: 400;
+    margin-top: 2vw;
+    text-shadow: 0 0 2px black;
+}
+
+.goodLuckThumbContainer p {
+    color: white;
+    font-size: .8vw;
+    text-shadow: 0 0 2px black;
+}
+
+.groupOfOneContainer div,
+.groupOfThreeContainer div {
+    position: relative;
+    width: 25%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.groupOfThreeContainer div img {
+    width: 4vw;
+    height: 4vw;
+}
+
+.groupOfOneContainer div img {
+    position: relative;
+    top: .4vw;
+    width: 6vw;
+    height: 6vw;
+}
+
+.rulesOnMobile {
+    display: none;
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="517f82a3-6824-4664-9e50-4ce30e7b9b21" name="footbalGame" url="https://promo.transperfect.com/">
+        <fileTransfer rootFolder="/var/www/promo" accessType="SFTP" host="10.10.23.241" port="22" sshConfigId="72ddc61c-16ca-4116-b907-87e029dfe7e1" sshConfig="plosev@10.10.23.241:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

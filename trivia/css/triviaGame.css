@@ -1,0 +1,66 @@
+
+:root {
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    -webkit-font-smoothing: antialiased;
+}
+
+::placeholder {
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 300;
+    font-size: .8vw;
+}
+
+#projectReturnContainer {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.inputContainer {
+    font-family: 'Comfortaa', sans-serif;
+    position: relative;
+    width: 30%;
+    height: auto;
+    margin: 5vw;
+}
+
+.inputContainer label {
+    font-size: .8vw;
+    position: relative;
+    float: left;
+    font-weight: 900;
+}
+
+.inputContainer .errorCode {
+    position: relative;
+    font-size: .8vw;
+    float: right;
+    color: darkred;
+    font-weight: 600;
+}
+
+[name=uemail] {
+    position: relative;
+    float: left;
+    padding: .3vw;
+    width: 98.2%;
+    border-radius: 5px;
+    font-size: 1.6vw;
+    font-weight: 300;
+    margin: .1vw 0;
+    border: 1px solid rgba(0,0,0,.3);
+}

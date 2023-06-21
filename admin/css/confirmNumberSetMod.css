@@ -1,0 +1,62 @@
+
+.randomNubersSetLockContainer {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,.3);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.randomNubersSetLockBody {
+    position: relative;
+    width: 45%;
+    height: auto;
+    background: #239B56;
+    margin: auto!important;
+    padding: 1vw;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.randomNubersSetLockBody h3 {
+    font-size: 2vw;
+    margin: 1.5vw;
+}
+
+.randomNubersSetLockBody p {
+    font-size: 1vw;
+    margin: .5vw;
+}
+
+.randomNubersSetLockBody b {
+    font-size: .8vw;
+    font-weight: 300;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    width: auto;
+    background: none;
+    background-image: linear-gradient(to right, transparent, #ffffff, transparent);
+}
+
+.agreedButton {
+    margin: 1vw auto !important;
+    text-align: center;
+    width: auto;
+    background: none;
+    padding: 1vw;
+    border: none;
+    font-size: 2vw;
+    font-family: 'Archivo Black', sans-serif;
+    color: white;
+    transform: rotate(-2deg);
+    outline: none;
+    cursor: pointer;
+}

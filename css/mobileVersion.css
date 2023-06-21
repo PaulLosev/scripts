@@ -1,0 +1,380 @@
+
+@media screen and (max-width: 1160px) {
+    body, html {
+        background-size: cover;
+        background-color: grey!important;
+    }
+
+    .containerWrapper {
+        width: 100%;
+    }
+
+    /* game header */
+
+    .containerHeader {
+        width: 100%;
+        height: 20vw;
+        margin-bottom: 5vw;
+    }
+
+    .headerLogoContainer {
+        width: 12vw;
+        top: 1.4vw;
+        left: 4vw !important;
+    }
+
+    .actualLogo {
+        width: auto;
+        height: 20vw;
+        border-radius: 20px;
+    }
+
+    .projectNavigation {
+        top: 4vw;
+        right: 4vw;
+    }
+
+    .logInbutton,
+    .projectNavButton {
+        padding: 1.7vw 5vw;
+        font-size: 2vw;
+    }
+
+    /* game header */
+
+    /* game second container */
+
+    .containerBodyHeader {
+        top: -1.3vw;
+        width: 100%;
+        float: left;
+    }
+
+    .afterLogin {
+        width: 45%;
+        padding: 2.2vw;
+        margin-bottom: 6vw;
+    }
+
+    .leftSideContainer {
+        width: 45%;
+        padding: 2.2vw;
+        left: 1vw;
+        margin-bottom: 6vw;
+    }
+
+    .greetingsAfterLogin {
+        width: 60%;
+        padding: .6vw;
+        margin-bottom: 16vw;
+    }
+
+    .afterLogin .logInbutton {
+        font-size: 1vw;
+    }
+
+    .afterLogin h2,
+    .leftSideContainer h2 {
+        font-size: 2.6vw;
+    }
+
+    .afterLogin p,
+    .leftSideContainer p {
+        font-size: 2vw;
+        line-height: 1.2;
+    }
+
+    .greetingsAfterLogin h2 {
+        font-size: 2vw;
+        font-weight: 400;
+        color: white;
+    }
+
+    .greetingsAfterLogin p {
+        font-size: 2vw;
+        font-weight: 300;
+        color: white;
+    }
+
+    .leftSideContainer::before {
+        width: 5vw;
+        height: 5vw;
+        top: 11vw;
+        left: 22vw;
+    }
+
+    .afterLogin::before {
+        width: 5vw;
+        height: 5vw;
+        top: 11vw;
+        left: 22vw;
+    }
+
+    .greetingsAfterLogin::before {
+        width: 4vw;
+        height: 4vw;
+        top: 7vw;
+        left: 28.6vw;
+    }
+
+    /* game second container */
+
+    /* game help link */
+    .promotionalBlockContainerInnerBody p {
+        font-size: 2.5vw;
+        line-height: 1.2;
+        padding: 1vw;
+    }
+
+    .promotionalBlockContainerInnerBody h2 {
+        font-size: 3vw;
+        line-height: 1;
+    }
+
+    /* game help link */
+
+    /* game third container */
+
+    .promotionalBlockContainer {
+        margin: 10vw auto!important;
+    }
+
+    .promotionalBlockContainerBodyPrizes {
+        width: 97%;
+    }
+
+    .queterContainer {
+        width: 25%;
+        padding: 2vw;
+    }
+
+    .queterContainer p {
+        font-size: 1.6vw;
+        line-height: 1.3;
+    }
+
+    .queterContainer p b {
+        font-size: 2vw;
+    }
+
+    .promotionalBlockContainerBodyPrizes::after {
+        font-size: 3vw;
+        top: -4vw;
+        height: auto;
+    }
+
+    /* game third container */
+
+    /* game grid container */
+
+    .gridLayoutContainer {
+        position: relative;
+        width: 91%;
+        left: 10px;
+        height: 90%;
+        box-shadow: none;
+    }
+
+    .gridTopSide {
+        width: auto;
+        height: auto;
+    }
+
+    .gridLeftSide {
+        width: 7.6vw;
+        height: auto;
+    }
+
+    .squareContainer {
+        margin: 1px;
+        width: 7.6vw;
+        height: 7.6vw;
+        font-size: 1.7vw;
+        font-size: 2vw;
+    }
+
+    .squareContainerTop {
+        width: 7.6vw;
+        height: 7.6vw;
+        font-size: .7vw;
+    }
+
+    .mainGridContainer {
+        left: 4px;
+        width: 91%;
+        height: auto;
+        box-shadow: none;
+    }
+
+    .actualLog {
+        width: 40px;
+    }
+
+    .topAdjuster {
+        font-size: 3vw;
+    }
+
+    .adjustedHover p {
+        font-size: .8vw;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .adjustedHover p strong {
+        font-size: 1.3vw;
+        text-align: center;
+    }
+
+    .topTeamGridHeader {
+        top: -3.1vw;
+        left: .1vw;
+        font-size: 2.4vw;
+        width: 99.8%;
+    }
+
+    .leftTeamGridHeader {
+        left: -3.1vw;
+        height: 109.6%;
+        top: -9.8%;
+        font-size: 2.4vw;
+    }
+
+    .won {
+        background: gold!important;
+        width: 7.9vw;
+        height: 7.6vw;
+        font-size: 1.7vw;
+        -webkit-box-shadow: 0px 0px 20px 10px #000000;
+        box-shadow: 0px 0px 20px 10px gold;
+    }
+
+    .won::after {
+        top: -20px;
+        left: 20px;
+        width: 6vw;
+        height: 5vw;
+    }
+
+    /* game grid container */
+
+    /* promo blocks */
+    .promotionalBlockContainer {
+        width: 97%;
+        margin: 20vw auto!important;
+    }
+
+    .promotionalBlockContainerBody {
+        width: 100%;
+        float: left;
+        height: auto;
+        left: -9px;
+        margin: 4vw auto!important;
+    }
+
+    .promotionalBlockContainerTwo {
+        width: 100%;
+        height: auto;
+    }
+
+    .promotionalBlockContainerInnerBody {
+        width: 98.2%;
+        height: auto;
+        padding: .5vw;
+        margin: 0;
+    }
+
+    .rulsContainer {
+        width: auto;
+        padding: .6vw;
+        height: auto;
+        margin-bottom: .5vw;
+        border-radius: 5px;
+        background: white url('/img/football.png') no-repeat right 150px;
+        background-size: 90%;
+    }
+
+    .rulsContainer p {
+        font-size: 1.4vw;
+        line-height: 1.2;
+        padding: 1vw;
+    }
+
+    .promotionalBlockContainerInnerBody p strong {
+        font-size: 2vw;
+        line-height: 1.2;
+        padding: 1vw;
+    }
+
+    .promotionalBlockContainerInnerBodyPrizes p {
+        font-size: 2vw;
+        line-height: 1.3;
+        margin-bottom: .6vw;
+    }
+
+    .promotionalBlockContainerInnerBody span {
+        color: #8A94B0;
+    }
+
+    .promotionalBlockContainerInnerBody img {
+        width: 100%;
+        margin: auto!important;
+    }
+
+    .promotionalBlockContainerInnerBody ul {
+        margin-top: .6vw;
+        margin-bottom: 1vw;
+    }
+
+    .promotionalBlockContainerInnerBody h3 {
+        font-size: 2vw;
+    }
+
+    .promotionalBlockContainerInnerBody li {
+        line-height: 1.3;
+        margin-left: 3vw;
+        font-size: 1.7vw;
+    }
+
+    /* promo blocks */
+
+    /* footer */
+
+    .firstFooterContiner {
+        width: 60%;
+        padding: 3vw 0;
+        display: none;
+    }
+
+    .firstFooterContiner li a {
+        font-size: 1.6vw;
+        line-height: 1;
+    }
+
+    .firstFooterContiner h2 {
+        margin-bottom: .5vw;
+        margin-top: .5vw;
+        width: auto;
+        line-height: 1;
+    }
+
+    .firstFooterContiner h2 a {
+        font-size: 1.7vw;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+
+    .lastLineOnTheHeader {
+        margin: 2vw auto!important;
+        top: 5px;
+        height: auto;
+        padding: 0;
+        font-size: 1vw;
+    }
+
+    .footerSmallreConatiner {
+        width: 48%;
+        line-height: 1;
+    }
+
+    /* footer */
+}

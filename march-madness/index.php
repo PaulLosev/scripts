@@ -1,8 +1,6 @@
 
 <?php
 
-echo 'UNDER RECONSTRUCTION <a href="https://transperfect-marcomm.monday.com/boards/3015854283/pulses/4185282897" target="_blank">TICKET</a>';
-
 // set classes
 require_once $_SERVER['DOCUMENT_ROOT'] . 'march-madness/classes/connect.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . 'march-madness/classes/formUI.php';

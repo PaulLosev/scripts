@@ -11,7 +11,7 @@ class ipStack {
     // endregion
 
     // region class const
-    const KEY = '4cab4fa7a5b0dee87d43165b654570ce';
+    const KEY = '';
     // endregion
 
     // region class methods

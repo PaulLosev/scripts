@@ -17,7 +17,6 @@
         }// end constructor()
         /**
          * main email validation method
-         * @param data
          */
         getEmailInputData() {
             // test print

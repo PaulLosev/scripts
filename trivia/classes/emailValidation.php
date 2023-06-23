@@ -63,7 +63,6 @@
         public function emailDoubleEntry(string $value) {
             echo $value;
             // test
-            /** @var TYPE_NAME $query */
             $query = 'select * from `cupTeams`';
             $stmt = $this->dbc->prepare($query);
             echo $stmt->execute() === true ? 'connected' : 'failed to connect';

@@ -15,7 +15,7 @@
                     <!-- container label -->
                     <label>Email</label>
                     <!-- container error code -->
-                    <span class="errorCode">invalid email format</span>
+                    <span class="errorCode"></span>
                     <!-- container input -->
                     <input type="email" name="uemail" id="uemail" placeholder="start typing.." />
                     <!-- container info print -->       

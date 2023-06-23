@@ -22,13 +22,13 @@
         /**
          * method check if email value in the db
          * returns boolian values
-         * @param $eid
-         * @return boolean
+         * @param $value string
+         * @return bool
          */
-        public function checkForDoubleEntries($eid) {
-
+        public function takeEmailValue(string $value) {
+            echo $value;
             // return true only
-            return true;
+            // return true;
         }// end checkForDoubleEntries()
         // endregion
     }// end emailValidation{}

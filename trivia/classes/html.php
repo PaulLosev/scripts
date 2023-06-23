@@ -33,8 +33,8 @@
                             <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
                             <link href="/trivia/css/triviaGame.css?' . time(). '" rel="stylesheet">
                             <!-- <link href="/trivia/css/mobileVersion.css?' . time(). '" rel="stylesheet"> -->
-                            <script src="//code.jquery.com/jquery-1.12.4.js"></script>
-                            <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                            <script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>
+                            <script type="text/javascript" src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
                         </head>
                         <body>

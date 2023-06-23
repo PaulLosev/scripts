@@ -8,12 +8,17 @@
             this.popupInfoContainer = $('.infoContainer');
             // error container
             this.errorContainer = $('.errorCode');
+            // region method warnings
             // error code not valid
-            this.notValidEmailFormat = 'incorrect email format: <b>youname@emailprovider.zone</b>';
+            this.notValidEmailFormat = 'incorrect email format: <b>younrame@emailprovider.zone</b>';
             // error code double entry
             this.doubleEntryValue = 'The email is in the system, please use another';
             // error code personal email
             this.personalEmailUsage = 'You\'ve used a personal email. You\'ll lose game points';
+            // endregion
+            // region scrip paths
+            this.doubleEntry = '/trivia/phpScripts/emailEntrieCheck.php';
+            // endregion
         }// end constructor()
         /**
          * main email validation method
@@ -26,7 +31,7 @@
                 keyup: function() {
                     // validate email format
                     emailValid.validateEmailFormat(this.value);
-                    emailValid.popupInfoContainer.html('console: ' + this.value);
+                    emailValid.popupInfoContainer.html('console: ' + this.value).show('drop', {direction: 'right'}, 'fast');
                 }// end On()
             })// end on()
         }// end getEmailInputData()
@@ -47,8 +52,8 @@
          */
         emailDoubleEntries(value) {
             // hide email format error
-            this.errorContainer.html('').hide();
-            this.errorCall('valid, calling the double entry method');
+            this.errorCall('valid, calling the double entry method' + value);
+            console.log(this.ajaxCall(value, this.doubleEntry));
         }// end emailDoubleEntries()
         /**
          * methods validates email provider
@@ -66,8 +71,8 @@
         /**
          * method calls backend for data by eid
          */
-        ajaxCall() {
-
+        ajaxCall(value, path) {
+            return $.ajax({url: path, type: 'post', async: false, data: {value: value}}).responseText;
         }// end ajaxCall()
     }// end emailClass{}
     // set the class instance

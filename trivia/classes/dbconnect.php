@@ -1,6 +1,8 @@
 <?php
 
+    // namespace
     namespace classes;
+    use PDO;
     /**
      * dbconnect by Paul Losev
      */
@@ -15,7 +17,6 @@
         // region class methods
         /**
          * method returns db connect
-         * @return PDO
          */
         public function connect(): PDO {
             // db connect

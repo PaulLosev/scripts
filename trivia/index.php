@@ -8,8 +8,8 @@
     use classes\formUI;
     use classes\html;
     // connect classes
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/trivia/classes/formUI.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . '/trivia/classes/emailValidation.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/trivia/classes/formUI.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . '/trivia/classes/html.php';
     // set class instance
     $htmlBuild = new html();

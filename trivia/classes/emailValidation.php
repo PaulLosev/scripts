@@ -1,18 +1,35 @@
 <?php
 
+    // namespase
     namespace classes;
-
-    class emailValidation {
+    // connect classes
+    use PDO;
+    // connect classes
+    require $_SERVER['DOCUMENT_ROOT'] . '/trivia/classes/dbconnect.php';
+    /**
+     * class emailValidation
+     */
+    class emailValidation extends dbconnect {
         // region class properties
+        /**
+         * @var PDO PDO class connect
+         */
+        private PDO $dbc;
         // endregion
         // region class const
         const DOUBLE_ENTRY = 'doubleEntry';
         const EMAIL_PROVIDER = 'emailProvider';
-
         // region db table name const
-        const USER_TABEL = 'triviaGameUsers';
+        const USER_TABLE = 'triviaGameUsers';
         // endregion
-        // region class methods
+        // region class method
+        /**
+         * parent method construct
+         */
+        public function __construct() {
+            // set connect
+            $this->dbc = $this->connect();
+        }// end construct()
         /**
          * @return string[]
          */
@@ -44,8 +61,11 @@
          * @param string $value
          */
         public function emailDoubleEntry(string $value) {
-
             echo $value;
+            // test
+            $query = 'select * from `cupTeams`';
+            $stmt = $this->dbc->prepare($query);
+            echo $stmt->execute() === true ? 'connected' : 'failed to connect';
         }// end emailDoubleEntry()
         // endregion
     }// end emailValidation{}

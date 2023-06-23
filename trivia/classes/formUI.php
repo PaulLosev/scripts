@@ -1,7 +1,10 @@
 <?php
 
+    // namespase
     namespace classes;
-
+    /**
+     * class formUI
+     */
     class formUI {
         // region class properties
         // endregion

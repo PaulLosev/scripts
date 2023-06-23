@@ -8,6 +8,9 @@
         // region class const
         const DOUBLE_ENTRY = 'doubleEntry';
         const EMAIL_PROVIDER = 'emailProvider';
+
+        // region db table name const
+        const USER_TABEL = 'triviaGameUsers';
         // endregion
         // region class methods
         /**
@@ -31,7 +34,7 @@
                 case self::DOUBLE_ENTRY:
                     $this->emailDoubleEntry($post['email']);
                     break;
-                case '':
+                case self::EMAIL_PROVIDER:
                     echo 'test';
                     break;
             }// end switch construction

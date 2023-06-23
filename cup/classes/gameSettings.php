@@ -17,7 +17,7 @@ class gameSettings {
     public function getConnected(): PDO {
 
         // clients game
-        return new PDO('mysql:host=;dbname=', '', '');
+        return new PDO('mysql:host=tpt-web4-db;dbname=promo', 'promo', 'c,wiejF83V.3');
     }// end getConnected()
 
     /**

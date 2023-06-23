@@ -28,10 +28,10 @@
         getEmailInputData() {
             // test print
             let emailInput = $('#uemail');
-            //
+            // start email validation logic
             emailInput.on({
+                // validate email
                 keyup: function() {
-                    // validate email format
                     emailValid.validateEmailFormat(this.value);
                     emailValid.popupInfoContainer.html('console: ' + this.value).show('drop', {direction: 'right'}, 'fast');
                 }// end On()

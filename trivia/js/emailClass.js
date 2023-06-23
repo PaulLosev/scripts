@@ -8,6 +8,8 @@
             this.popupInfoContainer = $('.infoContainer');
             // error container
             this.errorContainer = $('.errorCode');
+            // email form validation formula
+            this.RegExpression = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             // region method warnings
             // error code not valid
             this.notValidEmailFormat = 'incorrect email format: <b>younrame@emailprovider.zone</b>';
@@ -17,7 +19,7 @@
             this.personalEmailUsage = 'You\'ve used a personal email. You\'ll lose game points';
             // endregion
             // region scrip paths
-            this.doubleEntry = '/trivia/phpScripts/emailEntrieCheck.php';
+            this.emailCheck = '/trivia/phpScripts/emailEntrieCheck.php';
             // endregion
         }// end constructor()
         /**
@@ -40,9 +42,8 @@
          */
         validateEmailFormat(value) {
             // email format formula
-            let mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             // validate email value
-            value.match(mailFormat)
+            value.match(this.RegExpression)
                 ? this.emailDoubleEntries(value)
                 : this.errorCall(this.notValidEmailFormat);
         }// end validateEmailFormat()
@@ -53,7 +54,16 @@
         emailDoubleEntries(value) {
             // hide email format error
             this.errorCall('valid, calling the double entry method' + value);
-            console.log(this.ajaxCall(value, this.doubleEntry));
+            // set FormData class instance
+            let mathodData= new FormData();
+            // set values to the data array
+            mathodData.append('method', 'doubleEntry');
+            mathodData.append('email', value);
+            // set methods
+            //this.ajaxCall(mathodData, this.emailCheck).trim() === 'true'
+            //    ? console.log('email provider method')
+            //    : this.errorCall(this.doubleEntryValue);
+            console.log(this.ajaxCall(mathodData, this.emailCheck));
         }// end emailDoubleEntries()
         /**
          * methods validates email provider
@@ -71,8 +81,15 @@
         /**
          * method calls backend for data by eid
          */
-        ajaxCall(value, path) {
-            return $.ajax({url: path, type: 'post', async: false, data: {value: value}}).responseText;
+        ajaxCall(data, path) {
+            // get data by array values
+            return $.ajax({
+                url: path,
+                type: 'post',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: data}).responseText;
         }// end ajaxCall()
     }// end emailClass{}
     // set the class instance

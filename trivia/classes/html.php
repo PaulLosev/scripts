@@ -41,7 +41,6 @@
                         <div id="projectReturnContainer">' . PHP_EOL;
             // endregion
         }// end projectHead()
-
         /**
          * method sets the html for the project
          * footer

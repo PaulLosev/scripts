@@ -1,5 +1,8 @@
 <?php
 
+    // keep errors alive
+    ini_set('display_errors', '1');
+    error_reporting(E_ALL);
     // set usage
     use classes\emailValidation;
     // connect classes
@@ -7,5 +10,5 @@
     // set the class instance
     $connect = new emailValidation();
     // call the double entry check
-    $connect->takeEmailValue($_POST['value']);
+    $connect->takeEmailValue($_POST);
     // endregion

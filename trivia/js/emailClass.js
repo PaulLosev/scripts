@@ -6,10 +6,6 @@
         constructor() {
             // set mail input container
             this.parentContainer = $('.inputContainer');
-            // email input container
-            this.popupInfoContainer = this.parentContainer.find('.infoContainer');
-            // error container
-            this.errorContainer = this.parentContainer.find('.errorCode');
             // email form validation formula
             this.RegExpression = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             // region method warnings
@@ -52,73 +48,84 @@
          * main email validation method
          */
         getEmailInputData() {
-            // test print
-            let emailInput = $('#uemail');
-            // start email validation logic
-            emailInput.on({
-                // validate email
-                keyup: function() {
-                    // clean up popups
-                    this.value === ''
-                        ? emailValid.popupInfoContainer.hide('drop', {direction: 'right'}, 'fast')
-                        : false;
-                    // validate
-                    emailValid.validateEmailFormat(this.value);
-                }// end On()
-            })// end on()
+            // start loop
+            $(this.parentContainer).each(function() {
+                // set error and info popup
+                let popupInfoContainer = $(this).find('.infoContainer');
+                let errorPopup = $(this).find('.errorCode');
+                // set trigger
+                let emailInput = $(this).find('input#uemail');
+                // start email validation logic
+                emailInput.on({
+                    // validate email
+                    keyup: function() {
+                        // clean up popups
+                        this.value === ''
+                            ? popupInfoContainer.hide('drop', {direction: 'right'}, 'fast')
+                            : false;
+                        // validate
+                        emailValid.validateEmailFormat(this.value, errorPopup, popupInfoContainer, this);
+                    }// end On()
+                })// end on()
+            })// end each()
         }// end getEmailInputData()
         /**
          * method validates email format
          */
-        validateEmailFormat(value) {
+        validateEmailFormat(value, errorPopup, popupInfoContainer, that) {
             // email format formula
             // validate email value
             value.match(this.RegExpression)
-                ? this.emailDoubleEntries(value)
-                : this.errorCall(this.notValidEmailFormat);
+                ? this.emailDoubleEntries(value, errorPopup, popupInfoContainer, that)
+                : this.errorCall(this.notValidEmailFormat, errorPopup);
         }// end validateEmailFormat()
         /**
          * method validates email value on double entries
          * @param value
          */
-        emailDoubleEntries(value) {
-            this.errorCall(' ')
+        emailDoubleEntries(value, errorPopup, popupInfoContainer, that) {
+            // clear errors
+            this.errorCall(' ', errorPopup);
             // set FormData class instance
             let methodData= new FormData();
             // set values to the data array
             methodData.append('method', 'doubleEntry');
             methodData.append('email', value);
-            // set methods
+            // set methods for returning user
             if (this.ajaxCall(methodData, this.emailCheck).trim() === 'true') {
-                this.errorCall(this.doubleEntryValue);
-                console.log('hide save button');
+                // show warning
+                this.errorCall(this.doubleEntryValue, errorPopup);
+                // hide submit button
+                // TODO:Write logic to hide the submit button in the form class
             } else {
-                this.validateEmailProvider(value);
+                // new user
+                this.validateEmailProvider(value, popupInfoContainer, that);
             }// end if
         }// end emailDoubleEntries()
         /**
          * methods validates email provider
          */
-        validateEmailProvider(value) {
+        validateEmailProvider(value, popupInfoContainer, that) {
             //
             if (this.emailProvider(this.findEmailProviderName(value)) !== undefined) {
                 // add minus 3 points
-                $(this.parentContainer).attr('ptminus', 'true');
+                console.log(that);
+                $(that).parent().attr('ptminus', 'true');
                 // show warning
-                emailValid.popupInfoContainer.html(this.personalEmailUsage).show('drop', {direction: 'right'}, 'fast');
+                popupInfoContainer.html(this.personalEmailUsage).show('drop', {direction: 'right'}, 'fast');
             } else {
-                $(this.parentContainer).removeAttr('ptminus');
+                $(that).parent().removeAttr('ptminus');
                 // show warning
-                emailValid.popupInfoContainer.hide('drop', {direction: 'right'}, 'fast');
+                popupInfoContainer.hide('drop', {direction: 'right'}, 'fast');
             }// end if()
             // get email provider
         }// end validateEmailProvider()
         /**
          * method calls for error
          */
-        errorCall(error) {
+        errorCall(error, errorPopup) {
             // show error
-            this.errorContainer.html(error).show();
+            $(errorPopup).html(error).show();
         }// end error
         /**
          * method calls backend for data by eid

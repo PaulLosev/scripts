@@ -4,10 +4,12 @@
          * parent class method
          */
         constructor() {
+            // set mail input container
+            this.parentContainer = $('.inputContainer');
             // email input container
-            this.popupInfoContainer = $('.infoContainer');
+            this.popupInfoContainer = this.parentContainer.find('.infoContainer');
             // error container
-            this.errorContainer = $('.errorCode');
+            this.errorContainer = this.parentContainer.find('.errorCode');
             // email form validation formula
             this.RegExpression = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             // region method warnings
@@ -16,12 +18,36 @@
             // error code double entry
             this.doubleEntryValue = 'The email is in the system, please use another';
             // error code personal email
-            this.personalEmailUsage = 'You\'ve used a personal email. You\'ll lose game points';
+            this.personalEmailUsage = 'You\'ve used a personal email. You\'ll lose 3 game points';
             // endregion
             // region scrip paths
             this.emailCheck = '/trivia/phpScripts/emailEntrieCheck.php';
             // endregion
         }// end constructor()
+        /**
+         * method sets email providers
+         */
+        emailProvider(value) {
+            // set array with providers
+            let providersArr = [
+                {id: 'gmail', ret: 'false'},
+                {id: 'mail',  ret: 'false'},
+                {id: 'yahoo', ret: 'false'},
+            ];
+            // find values
+            let result = providersArr.find((name) => {
+                return name.id === value;
+            })// end find()
+            // return value
+            return result;
+        }// end emailProvider()
+        /**
+         * method splits email address and return the email provider
+         */
+        findEmailProviderName(value) {
+            // split email
+            return value.split('@')[1].split('.')[0];
+        }// end findEmailProviderName()
         /**
          * main email validation method
          */
@@ -32,8 +58,12 @@
             emailInput.on({
                 // validate email
                 keyup: function() {
+                    // clean up popups
+                    this.value === ''
+                        ? emailValid.popupInfoContainer.hide('drop', {direction: 'right'}, 'fast')
+                        : false;
+                    // validate
                     emailValid.validateEmailFormat(this.value);
-                    emailValid.popupInfoContainer.html('console: ' + this.value).show('drop', {direction: 'right'}, 'fast');
                 }// end On()
             })// end on()
         }// end getEmailInputData()
@@ -48,34 +78,46 @@
                 : this.errorCall(this.notValidEmailFormat);
         }// end validateEmailFormat()
         /**
-         * method validates email value on doubentries
+         * method validates email value on double entries
          * @param value
          */
         emailDoubleEntries(value) {
-            // hide email format error
-            this.errorCall('valid, calling the double entry method' + value);
+            this.errorCall(' ')
             // set FormData class instance
-            let mathodData= new FormData();
+            let methodData= new FormData();
             // set values to the data array
-            mathodData.append('method', 'doubleEntry');
-            mathodData.append('email', value);
+            methodData.append('method', 'doubleEntry');
+            methodData.append('email', value);
             // set methods
-            //this.ajaxCall(mathodData, this.emailCheck).trim() === 'true'
-            //    ? console.log('email provider method')
-            //    : this.errorCall(this.doubleEntryValue);
-            console.log(this.ajaxCall(mathodData, this.emailCheck));
+            if (this.ajaxCall(methodData, this.emailCheck).trim() === 'true') {
+                this.errorCall(this.doubleEntryValue);
+                console.log('hide save button');
+            } else {
+                this.validateEmailProvider(value);
+            }// end if
         }// end emailDoubleEntries()
         /**
          * methods validates email provider
          */
-        validateEmailProvider(provider) {
-
+        validateEmailProvider(value) {
+            //
+            if (this.emailProvider(this.findEmailProviderName(value)) !== undefined) {
+                // add minus 3 points
+                $(this.parentContainer).attr('ptminus', 'true');
+                // show warning
+                emailValid.popupInfoContainer.html(this.personalEmailUsage).show('drop', {direction: 'right'}, 'fast');
+            } else {
+                $(this.parentContainer).removeAttr('ptminus');
+                // show warning
+                emailValid.popupInfoContainer.hide('drop', {direction: 'right'}, 'fast');
+            }// end if()
+            // get email provider
         }// end validateEmailProvider()
         /**
          * method calls for error
          */
         errorCall(error) {
-            //
+            // show error
             this.errorContainer.html(error).show();
         }// end error
         /**

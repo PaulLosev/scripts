@@ -20,7 +20,7 @@
         const DOUBLE_ENTRY = 'doubleEntry';
         const EMAIL_PROVIDER = 'emailProvider';
         // region db table name const
-        const USER_TABLE = 'triviaGameUsers';
+        const USER_TABLE = 'trivUsers';
         // endregion
         // region class method
         /**
@@ -30,16 +30,6 @@
             // set connect
             $this->dbc = $this->connect();
         }// end construct()
-        /**
-         * @return string[]
-         */
-        public function emailProviders(): array {
-            // return array
-            return [
-             'gmail',
-             'mail',
-            ];
-        }// end emailProviders()
         /**
          * method check if email value in the db
          * returns boolian values
@@ -58,14 +48,21 @@
         }// end checkForDoubleEntries()
         /**
          * method runs a check for double entries in the db table
-         * @param string $value
+         * @param string $email
+         * @return void
          */
-        public function emailDoubleEntry(string $value) {
-            echo $value;
-            // test
-            $query = 'select * from `cupTeams`';
+        public function emailDoubleEntry(string $email) {
+            // query
+            $query = 'select `id` 
+                        from `' . self::USER_TABLE . '` 
+                       where `email` = :email';
+            // prepare & run
             $stmt = $this->dbc->prepare($query);
-            echo $stmt->execute() === true ? 'connected' : 'failed to connect';
+            $stmt->execute([':email' => $email]);
+            // return true if email is in db
+            echo empty($stmt->fetch(PDO::FETCH_ASSOC)) === false
+                ? 'true'
+                : 'false';
         }// end emailDoubleEntry()
         // endregion
     }// end emailValidation{}

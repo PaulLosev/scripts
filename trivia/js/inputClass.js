@@ -17,6 +17,9 @@
             this.systemPersonalEmailUsage = '';
             // region system wording
             this.requiredInput = '*required field';
+            // region scrip paths
+            this.saveUserData = '/trivia/phpScripts/saveUserData.php';
+            // endregion
         }// end constructor()
         validateForm() {
             // set actions
@@ -75,9 +78,42 @@
             let arrayCount = data.length;
             // set action
             totalInputs === arrayCount
-                ? console.log('call save method: ' + data + ', email type: ' + formValidate.systemPersonalEmailUsage)
-                : console.log('*required fileds');
+                ? this.saveMethod(data, formValidate.systemPersonalEmailUsage)
+                : console.log('%c *required fields', 'color: pink');
         }// end presaveMethod()
+        /**
+         * method builds dat array + saves user data
+         * @param data
+         * @param type
+         */
+        saveMethod(data, type) {
+            // set data
+            let dataSet = new FormData();
+            dataSet.append('name', data[0]);
+            dataSet.append('lastName', data[1]);
+            dataSet.append('email', data[2]);
+            // TODO: reassign the real points
+            dataSet.append('ttlPoints', 3);
+            // cast email type
+            type !== ''
+                ? dataSet.append('emailType', type)
+                : '';
+            // call PHP save method
+            console.log(this.ajaxCall(dataSet, this.saveUserData));
+        }// end saveMethod()
+        /**
+         * method calls backend for data by eid
+         */
+        ajaxCall(data, path) {
+            // get data by array values
+            return $.ajax({
+                url: path,
+                type: 'post',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: data}).responseText;
+        }// end ajaxCall()
         // endregion
     }// end validateInput{}
     // set the class instance

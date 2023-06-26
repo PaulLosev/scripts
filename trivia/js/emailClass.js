@@ -6,6 +6,8 @@
         constructor() {
             // set mail input container
             this.parentContainer = $('#emailValidation');
+            // set all inputs on the form
+            this.submitButton = this.parentContainer.parent().find('#uprefSubmit');
             // email form validation formula
             this.RegExpression = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             // region method warnings
@@ -104,6 +106,8 @@
             } else {
                 // new user
                 this.validateEmailProvider(value, popupInfoContainer, that);
+                // show submit
+                this.submitButton.show();
             }// end if
         }// end emailDoubleEntries()
         /**
@@ -129,6 +133,8 @@
         errorCall(error, errorPopup) {
             // show error
             $(errorPopup).html(error).show();
+            // hide submit
+            this.submitButton.hide();
         }// end error
         /**
          * method calls backend for data by eid

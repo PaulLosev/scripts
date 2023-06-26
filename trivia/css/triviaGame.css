@@ -35,6 +35,7 @@ html, body {
 .inputContainer {
     font-family: 'Comfortaa', sans-serif;
     position: relative;
+    float: left;
     width: 30%;
     height: auto;
     margin: 5vw;
@@ -55,7 +56,7 @@ html, body {
     font-weight: 600;
 }
 
-[name=uemail] {
+.inputContainer input {
     position: relative;
     float: left;
     padding: .3vw;

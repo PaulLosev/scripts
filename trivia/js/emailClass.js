@@ -5,7 +5,7 @@
          */
         constructor() {
             // set mail input container
-            this.parentContainer = $('.inputContainer');
+            this.parentContainer = $('#emailValidation');
             // email form validation formula
             this.RegExpression = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             // region method warnings
@@ -50,11 +50,13 @@
         getEmailInputData() {
             // start loop
             $(this.parentContainer).each(function() {
+                // set prefix
+                const prefix = 'upref';
                 // set error and info popup
                 let popupInfoContainer = $(this).find('.infoContainer');
                 let errorPopup = $(this).find('.errorCode');
                 // set trigger
-                let emailInput = $(this).find('input#uemail');
+                let emailInput = $(this).find('input#' + prefix + 'email');
                 // start email validation logic
                 emailInput.on({
                     // validate email
@@ -97,6 +99,8 @@
                 this.errorCall(this.doubleEntryValue, errorPopup);
                 // hide submit button
                 // TODO:Write logic to hide the submit button in the form class
+                // hide warning
+                popupInfoContainer.hide('drop', {direction: 'right'}, 'fast');
             } else {
                 // new user
                 this.validateEmailProvider(value, popupInfoContainer, that);
@@ -106,16 +110,15 @@
          * methods validates email provider
          */
         validateEmailProvider(value, popupInfoContainer, that) {
-            //
+            // valider email provider
             if (this.emailProvider(this.findEmailProviderName(value)) !== undefined) {
                 // add minus 3 points
-                console.log(that);
                 $(that).parent().attr('ptminus', 'true');
                 // show warning
                 popupInfoContainer.html(this.personalEmailUsage).show('drop', {direction: 'right'}, 'fast');
             } else {
                 $(that).parent().removeAttr('ptminus');
-                // show warning
+                // hide warning
                 popupInfoContainer.hide('drop', {direction: 'right'}, 'fast');
             }// end if()
             // get email provider

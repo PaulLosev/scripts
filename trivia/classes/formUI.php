@@ -47,5 +47,37 @@
                   </div>
                   <!-- form element container -->' . PHP_EOL;
         }// end buildForm()
+        /**
+         * @return void
+         */
+        public function buildSubmit($value, $type) {
+            // set button html
+            echo '<!-- form element container -->
+                  <div class="inputContainer">
+                    <!-- container error code -->
+                    <span class="errorCode"></span>
+                    <!-- container input -->
+                    <input type="' . $type . '"  id="upref' . $value . '" value="' . $value . '" />
+                    <!-- container info print -->       
+                    <div class="infoContainer"></div>
+                  </div>' . PHP_EOL;
+        }// end buildSubmit()
+        /**
+         * form constructor
+         * @return void
+         */
+        public function buildForm() {
+            // set from container
+            echo '<div class="gameFormContainer">' . PHP_EOL;
+                // set email input
+                $this->buildFormInput('Name', 'input');
+                // set email input
+                $this->buildFormInput('Last Name', 'input');
+                // set email input
+                $this->buildFormInput('Email', 'email');
+                // set submit button
+                $this->buildSubmit('Submit', 'submit');
+            echo '</div>' . PHP_EOL;
+        }// end buildForm()
         // endregion
     }// end formUI()

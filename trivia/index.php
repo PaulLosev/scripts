@@ -17,13 +17,8 @@
     $formUIBuild = new formUI();
     // set project head
     $htmlBuild->projectHead();
-    // set email input
-    // $formUIBuild->buildFormInput('Name', 'input');
-    // set email input
-    $formUIBuild->buildFormInput('Last Name', 'input');
-    // set email input
-    $formUIBuild->buildFormInput('Email', 'email');
-
+    // build form
+    $formUIBuild->buildForm();
     // set project footer
     $htmlBuild->projectFooter();
     // endregion

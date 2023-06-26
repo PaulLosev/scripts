@@ -32,13 +32,28 @@ html, body {
     align-content: center;
 }
 
+.gameFormContainer {
+    position: relative;
+    height: auto;
+    float: left;
+    width: 30%;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,.1);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    padding: 2vw;
+    margin: 1vw 0;
+}
+
 .inputContainer {
     font-family: 'Comfortaa', sans-serif;
     position: relative;
     float: left;
-    width: 30%;
+    width: 100%;
     height: auto;
-    margin: 5vw;
+    margin: .5vw 0;
 }
 
 .inputContainer label {
@@ -58,14 +73,25 @@ html, body {
 
 .inputContainer input {
     position: relative;
-    float: left;
-    padding: .3vw;
-    width: 98.2%;
+    padding: .5vw;
+    width: 96.5%;
     border-radius: 5px;
     font-size: 1.6vw;
     font-weight: 300;
-    margin: .1vw 0;
     border: 1px solid rgba(0,0,0,.3);
+}
+
+.inputContainer [type=submit] {
+    position: relative;
+    width: 100%;
+    color: white;
+    cursor: pointer;
+    background: cornflowerblue;
+    transition: .2s;
+}
+
+.inputContainer [type=submit]:hover {
+    background: orange;
 }
 
 .errorCode {
@@ -75,11 +101,11 @@ html, body {
 .infoContainer {
     position: relative;
     display: none;
-    top: .8vw;
+    top: .5vw;
     float: right;
+    font-size: .8vw;
     width: 90%;
     padding: .8vw .9vw;
-    border-radius: 5px;
     background: var(--popup-background);
     color: var(--box-color);
     box-shadow: 0px 0 1px var(--box-shadow);

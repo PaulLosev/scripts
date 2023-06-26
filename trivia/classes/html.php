@@ -51,6 +51,7 @@
             echo '</div>
                 </body>                            
                 <script src="/trivia/js/emailClass.js?' . time(). '"></script>
+                <script src="/trivia/js/inputClass.js?' . time(). '"></script>
               </html>' . PHP_EOL;
             // endregion
         }// end projectFooter()

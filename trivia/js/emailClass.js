@@ -56,7 +56,7 @@
                 let popupInfoContainer = $(this).find('.infoContainer');
                 let errorPopup = $(this).find('.errorCode');
                 // set trigger
-                let emailInput = $(this).find('input#' + prefix + 'email');
+                let emailInput = $(this).find('input#' + prefix + 'Email');
                 // start email validation logic
                 emailInput.on({
                     // validate email

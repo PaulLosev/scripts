@@ -1,6 +1,6 @@
 <?php
 
-    // namespase
+    // namespace
     namespace classes;
     // connect classes
     use PDO;
@@ -32,7 +32,7 @@
         }// end construct()
         /**
          * method check if email value in the db
-         * returns boolian values
+         * returns boolean values
          * @param $post array
          */
         public function takeEmailValue(array $post) {

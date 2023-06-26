@@ -3,6 +3,9 @@
   <component name="SshConfigs">
     <configs>
       <sshConfig authType="PASSWORD" connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="10.10.23.241" id="72ddc61c-16ca-4116-b907-87e029dfe7e1" port="22" nameFormat="DESCRIPTIVE" username="plosev" useOpenSSHConfig="true" />
+      <sshConfig authType="PASSWORD" connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="10.10.23.241" id="991e5b46-0c46-4e5d-a93b-f5120c3062e0" port="22" customName="plosev@10.10.23.241:22 password2" nameFormat="CUSTOM" username="plosev" useOpenSSHConfig="true">
+        <option name="customName" value="plosev@10.10.23.241:22 password2" />
+      </sshConfig>
     </configs>
   </component>
 </project>

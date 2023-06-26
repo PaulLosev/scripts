@@ -51,7 +51,6 @@
                 value === ''
                     ? error.html(formValidate.requiredInput).show()
                     : formValidate.pushValue(value, error);
-
             })// end each()
         }// end validateInput()
         /**

@@ -73,11 +73,8 @@
          */
         presaveMethod(data) {
             // count total of all inputs on the form
-            let totalInputs = this.parentContainer.length;
-            // count current values in the array
-            let arrayCount = data.length;
             // set action
-            totalInputs === arrayCount
+            this.parentContainer.length === data.length
                 ? this.saveMethod(data, formValidate.systemPersonalEmailUsage)
                 : console.log('%c *required fields', 'color: pink');
         }// end presaveMethod()
@@ -87,17 +84,18 @@
          * @param type
          */
         saveMethod(data, type) {
-            // set data
+            // set form data class
             let dataSet = new FormData();
+            // set data
             dataSet.append('name', data[0]);
             dataSet.append('lastName', data[1]);
             dataSet.append('email', data[2]);
             // TODO: reassign the real points
             dataSet.append('ttlPoints', 3);
             // cast email type
-            type !== ''
-                ? dataSet.append('emailType', type)
-                : '';
+            type !== '' ? dataSet.append('emailType', type) : '';
+            // method
+            dataSet.append('method', 'save');
             // call PHP save method
             console.log(this.ajaxCall(dataSet, this.saveUserData));
         }// end saveMethod()

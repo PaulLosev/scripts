@@ -29,7 +29,7 @@
                             <link rel="icon" type="image/png" href="/img/favicon.ico" />
                             <meta property="og:image" content="" />
                             <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;600;700&display=swap" rel="stylesheet">
-                            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+                            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
                             <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
                             <link href="/trivia/css/triviaGame.css?' . time(). '" rel="stylesheet">
                             <!-- <link href="/trivia/css/mobileVersion.css?' . time(). '" rel="stylesheet"> -->

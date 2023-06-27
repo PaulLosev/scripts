@@ -2,6 +2,7 @@
 :root {
     --popup-background: black;
     --box-shadow: rgba(0,0,0.3);
+    --box-boder: rgba(0,0,0,.1);
     --box-color: white;
 }
 
@@ -38,13 +39,24 @@ html, body {
     float: left;
     width: 30%;
     border-radius: 5px;
-    border: 1px solid rgba(0,0,0,.1);
+    border: 1px solid var(--box-boder);
     display: flex;
     justify-content: center;
     align-content: center;
     flex-direction: column;
     padding: 2vw;
     margin: 1vw 0;
+}
+
+.gameFormContainer h2 {
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-size: .8vw;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .inputContainer {
@@ -71,14 +83,24 @@ html, body {
     font-weight: 600;
 }
 
-.inputContainer input {
+.inputContainer input,
+.inputContainer select {
     position: relative;
     padding: .5vw;
     width: 96.5%;
     border-radius: 5px;
     font-size: 1.6vw;
     font-weight: 300;
-    border: 1px solid rgba(0,0,0,.3);
+    border: 1px solid var(--box-boder);
+}
+.inputContainer select {
+    position: relative;
+    padding: .5vw;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 1.6vw;
+    font-weight: 300;
+    border: 1px solid var(--box-boder);
 }
 
 .inputContainer [type=submit] {

@@ -17,8 +17,9 @@
             this.systemPersonalEmailUsage = '';
             // region system wording
             this.requiredInput = '*required field';
-            // region scrip paths
+            // region script paths
             this.saveUserData = '/trivia/phpScripts/saveUserData.php';
+            this.tirviaQuestionCheck = '/trivia/phpScripts/questionCheck.php';
             // endregion
         }// end constructor()
         validateForm() {
@@ -43,7 +44,7 @@
                 // get error container
                 let error = $(this).find('.errorCode');
                 // set data
-                let value = $(this).find('input').val();
+                let value = $(this).find('input, select');
                 // get prsonal email usage token
                 let personal = $(this).attr('ptminus');
                 // get personal email usage flag
@@ -51,7 +52,7 @@
                     ? formValidate.systemPersonalEmailUsage = 'personal'
                     : false;
                 // return validation
-                value === ''
+                value.val() === ''
                     ? error.html(formValidate.requiredInput).show()
                     : formValidate.pushValue(value, error);
             })// end each()
@@ -65,13 +66,14 @@
             // hide error
             $(error).html('').hide();
             // push value
-            this.data.push(value);
+            this.data.push({itemName: value.val(), category: value.attr('category'), id: $(value).attr('id')});
         }// end pushValue()
         /**
          * presave method validates all inputs returned validated
          * @param data
          */
         presaveMethod(data) {
+            // console.log(this.parentContainer.length);
             // count total of all inputs on the form
             // set action
             this.parentContainer.length === data.length
@@ -87,18 +89,29 @@
             // set form data class
             let dataSet = new FormData();
             // set data
-            dataSet.append('name', data[0]);
-            dataSet.append('lastName', data[1]);
-            dataSet.append('email', data[2]);
-            // TODO: reassign the real points
-            dataSet.append('ttlPoints', 3);
+            dataSet.append('user', JSON.stringify(this.filterData(data, 'user')));
+            dataSet.append('answers', JSON.stringify(this.filterData(data, 'question')));
             // cast email type
-            type !== '' ? dataSet.append('emailType', type) : '';
+            type !== ''
+                ? dataSet.append('emailType', type)
+                : '';
             // method
             dataSet.append('method', 'save');
             // call PHP save method
             console.log(this.ajaxCall(dataSet, this.saveUserData));
         }// end saveMethod()
+        /**
+         * method filters out not needed sata
+         * @param data
+         * @param needle
+         * @returns {*}
+         */
+        filterData(data, needle) {
+            // return needed data set
+            return data.filter((index, num) => {
+                return index.category === needle;
+            })// end filter()
+        }// end filterData()
         /**
          * method calls backend for data by eid
          */

@@ -98,6 +98,7 @@
             // method
             dataSet.append('method', 'save');
             // call PHP save method
+            // TODO: kill the log after all set and tested
             console.log(this.ajaxCall(dataSet, this.saveUserData));
         }// end saveMethod()
         /**

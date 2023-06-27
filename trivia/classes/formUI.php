@@ -31,7 +31,7 @@
         public function getTriviaQuestionsData() {
             // set query quesion variator
             $variator = isset($_GET['option']) === true
-                ? ' where `group` =' . $_GET['option']
+                ? ' where `group` = ' . $_GET['option']
                 : '';
             // query
             $query = 'select `id`,
@@ -55,7 +55,6 @@
             // return filtered questions
             unset($data['id']);
             unset($data['question']);
-            unset($data['winnerAnswer']);
             return $data;
         }// end sortQuestions()
         /**
@@ -97,8 +96,6 @@
             // build question dropdowns
             // get array of trivia questions
             foreach($this->getTriviaQuestionsData() as $dataSet) {
-                // form question order to each question
-                $questions = $this->sortQuestions($dataSet);
                 // set HTMLs
                 echo '<!-- form element container -->
                   <div class="inputContainer" id="triviaQuestionValidation">
@@ -110,7 +107,7 @@
                     <select name="triviaQuestion" id="' . $dataSet['id'] . '" category="question">
                         <option value="">- none -</option>';
                         // build answers
-                        foreach($questions as $question) {
+                        foreach($this->sortQuestions($dataSet) as $question) {
                             // return html
                             echo '<option value="' . $question . '">' . $question . '</option>' . PHP_EOL;
                         }// end foreach()
@@ -142,9 +139,9 @@
         public function buildForm() {
             // set from container
             echo '<div class="gameFormContainer">' . PHP_EOL;
-                // set email input
+                // set name input
                 $this->buildFormInput('Name', 'input');
-                // set email input
+                // set last name input
                 $this->buildFormInput('Last Name', 'input');
                 // set email input
                 $this->buildFormInput('Email', 'email');

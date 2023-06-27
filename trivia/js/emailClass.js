@@ -40,7 +40,7 @@
             return result;
         }// end emailProvider()
         /**
-         * method splits email address and return the email provider
+         * method splits email address and returns the email provider (raw)
          */
         findEmailProviderName(value) {
             // split email

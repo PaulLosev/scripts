@@ -13,6 +13,7 @@
         const TRIVIA_QUESTIONS_TABLE = 'triviaQuestions';
         // region form headers
         const ADDON_QUESTIONS_HEADLINE = 'To get more prizes please answer the questions';
+        const INPUT_PLACE_HOLDER = 'start typing..';
         // endregion
         // region class methods
         /**
@@ -80,7 +81,7 @@
                     <!-- container error code -->
                     <span class="errorCode"></span>
                     <!-- container input -->
-                    <input type="' . $type . '" name="u' . $inputName . '" id="upref' . $inputName . '" placeholder="start typing.." category="user" />
+                    <input type="' . $type . '" name="u' . $inputName . '" id="upref' . $inputName . '" placeholder="' . self::INPUT_PLACE_HOLDER . '" category="user" />
                     <!-- container info print -->       
                     <div class="infoContainer"></div>
                   </div>

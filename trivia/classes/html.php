@@ -4,6 +4,7 @@
 
     class html {
         // region class properties
+        const TITLE_HEADLINE = 'TransPerfect Trivia Promotion';
         // endregion
         // region class const
         // endregion
@@ -18,7 +19,7 @@
             echo '<!DOCTYPE html>
                     <html lang="en">
                         <head>
-                            <title>TransPerfect Trivia Promotion</title>
+                            <title>' . self::TITLE_HEADLINE . '</title>
                             <meta charset="UTF-8">
                             <meta name="description" content="" />
                             <meta name="author" content="TP, MarComm, Paul Losev">

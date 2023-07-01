@@ -19,7 +19,6 @@
             this.requiredInput = '*required field';
             // region script paths
             this.saveUserData = '/trivia/phpScripts/saveUserData.php';
-            this.tirviaQuestionCheck = '/trivia/phpScripts/questionCheck.php';
             // endregion
         }// end constructor()
         validateForm() {
@@ -73,7 +72,6 @@
          * @param data
          */
         presaveMethod(data) {
-            // console.log(this.parentContainer.length);
             // count total of all inputs on the form
             // set action
             this.parentContainer.length === data.length

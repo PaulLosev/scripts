@@ -1,26 +1,12 @@
-
-    class validateInput {
+    /**
+     * class validateInput
+     * extends functionality & constuctor methods
+     * from functionality class
+     */
+    class validateInput extends functionality {
         // region class const
         // enregion
         // region class methods
-        /**
-         * parent class method constructor
-         */
-        constructor() {
-            // main form container
-            this.parentContainer = $('.gameFormContainer').children('.inputContainer');
-            // set all inputs on the form
-            this.submitButton = this.parentContainer.find('#uprefSubmit');
-            // set data array
-            this.data = [];
-            // system data
-            this.systemPersonalEmailUsage = '';
-            // region system wording
-            this.requiredInput = '*required field';
-            // region script paths
-            this.saveUserData = '/trivia/phpScripts/saveUserData.php';
-            // endregion
-        }// end constructor()
         validateForm() {
             // set actions
             this.submitButton.on({
@@ -97,6 +83,7 @@
             dataSet.append('method', 'save');
             // call PHP save method
             // TODO: kill the log after all set and tested
+            this.test('from the functionality');
             console.log(this.ajaxCall(dataSet, this.saveUserData));
         }// end saveMethod()
         /**

@@ -37,6 +37,7 @@
                             <script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>
                             <script type="text/javascript" src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+                            <script src="/trivia/js/functionality.js?' . time(). '"></script>
                         </head>
                         <body>
                         <div id="projectReturnContainer">' . PHP_EOL;

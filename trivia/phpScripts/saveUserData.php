@@ -1,7 +1,14 @@
 <?php
 
+    // keep errors alive
+    ini_set('display_errors', '1');
+    error_reporting(E_ALL);
+    // set usage
+    use classes\saveUserData;
     // connect classes
-    echo 'email type: ' . $_POST['emailType'] . PHP_EOL;
-    echo 'method: ' . $_POST['method'] . PHP_EOL;
-    print_r(json_decode($_POST['user']));
-    print_r(json_decode($_POST['answers']));
+    require_once $_SERVER['DOCUMENT_ROOT'] . 'trivia/classes/saveUserData.php';
+    // set the class instance
+    $connect = new saveUserData();
+    // call the double entry check
+    $connect->save($_POST);
+    // endregion

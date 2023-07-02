@@ -14,6 +14,7 @@
         // region form headers
         const ADDON_QUESTIONS_HEADLINE = 'To get more prizes please answer the questions';
         const INPUT_PLACE_HOLDER = 'start typing..';
+        const FORM_HEADLINE_WORDING = 'Fill out the from';
         // endregion
         // region class methods
         /**
@@ -106,7 +107,7 @@
                     <span class="errorCode"></span>
                     <!-- container input -->
                     <select name="triviaQuestion" id="' . $dataSet['id'] . '" category="question">
-                        <option value="">- none -</option>';
+                        <option value="">-</option>';
                         // build answers
                         foreach($this->sortQuestions($dataSet) as $question) {
                             // return html
@@ -139,7 +140,8 @@
          */
         public function buildForm() {
             // set from container
-            echo '<div class="gameFormContainer">' . PHP_EOL;
+            echo '<div class="gameFormContainer">
+                    <h1>' . self::FORM_HEADLINE_WORDING . '</h1>' . PHP_EOL;
                 // set name input
                 $this->buildFormInput('Name', 'input');
                 // set last name input
@@ -149,7 +151,7 @@
                 // build form questions
                 $this->buildTriviaQustions();
                 // set submit button
-                $this->buildSubmit('Submit', 'submit');
+                $this->buildSubmit('Send', 'submit');
             echo '</div>' . PHP_EOL;
         }// end buildForm()
         // endregion

@@ -13,7 +13,7 @@
             // main form container
             this.parentContainer = $('.gameFormContainer').children('.inputContainer');
             // set all inputs on the form
-            this.submitButton = this.parentContainer.find('#uprefSubmit');
+            this.submitButton = this.parentContainer.find('input[type=submit]');
             // set data array
             this.data = [];
             // system data

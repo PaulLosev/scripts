@@ -33,7 +33,7 @@
         public function getTriviaQuestionsData() {
             // set query quesion variator
             $variator = isset($_GET['option']) === true
-                ? ' where `group` = ' . $_GET['option']
+                ? ' where `group` = "' . $_GET['option'] . '"'
                 : '';
             // query
             $query = 'select `id`,

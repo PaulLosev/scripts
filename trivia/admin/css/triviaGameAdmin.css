@@ -4,6 +4,8 @@
     --box-boder: rgba(0,0,0,.1);
     --box-color: white;
     --headline-color: #2471A3;
+    --save-button: #16A085;
+    --save-button-hover: #138D75;
 }
 
 * {
@@ -128,6 +130,44 @@ html, body {
     border: 1px solid var(--box-boder);
     font-family: 'Comfortaa', sans-serif;
 }
+
+.questionBody select {
+    position: relative;
+    width: 100%;
+    float: left;
+    height: auto;
+    font-size: 1.2vw;
+    padding: .3vw;
+    border-radius: 5px;
+    border: 1px solid var(--box-boder);
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.questionBody .saveMethod {
+    position: relative;
+    width: 40%;
+    float: right;
+    height: auto;
+    margin: .2vw 0;
+}
+
+.saveMethod button {
+    position: relative;
+    width: 10vw;
+    float: right;
+    height: auto;
+    font-size: .8vw;
+    padding: .3vw;
+    margin-top: .5vw;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background: var(--save-button);
+    cursor: pointer;
+    font-family: 'Comfortaa', sans-serif;
+    transition: .2s;
+}
+
 .questionBody .winner {
     position: relative;
     width: 3.5vw;
@@ -139,11 +179,22 @@ html, body {
     color: white;
     font-family: 'Comfortaa', sans-serif;
     font-size: .6vw;
+    cursor: pointer;
+    transition: .2s;
 }
-.questionBody .topwinner {
+
+.questionBody .topWinner {
     color: white;
     background: var(--headline-color);
 }
 
+.questionBody .winner:hover {
+    color: white;
+    background: var(--headline-color);
+}
 
+.saveMethod button:hover {
+    color: white;
+    background: var(--save-button-hover);
+}
 /* TRIVIA QUESTION MODULE */

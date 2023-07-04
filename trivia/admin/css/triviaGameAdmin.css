@@ -1,0 +1,149 @@
+:root {
+    --popup-background: black;
+    --box-shadow: rgba(0,0,0.3);
+    --box-boder: rgba(0,0,0,.1);
+    --box-color: white;
+    --headline-color: #2471A3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    -webkit-font-smoothing: antialiased;
+}
+
+::placeholder {
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 300;
+    font-size: .8vw;
+}
+
+#projectReturnContainer {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#projectReturnContainer {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+/* TRIVIA QUESTION MODULE */
+.triviaQuestionContainer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    float: left;
+    padding: .7vw;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.triviaQuestionBody {
+    position: relative;
+    width: 30%;
+    height: auto;
+    float: left;
+    padding: .1vw;
+}
+
+.questionContainer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    float: left;
+    padding: 1vw;
+    border-radius: 5px;
+    background: rgba(255,255,255,1);
+    border: 1px solid var(--box-boder);
+    box-shadow: 2px 2px 0 var(--box-boder);
+    margin: .4vw 0;
+}
+
+.questionContainer h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.questionBody label,
+.questionContainer label {
+    position: relative;
+    width: 20%;
+    height: auto;
+    float: left;
+    font-size: .5vw;
+    font-weight: 800;
+    margin-bottom: .3vw;
+    color: var(--headline-color);
+    text-transform: uppercase;
+}
+
+.questionBody .validationError {
+    position: relative;
+    width: 78%;
+    float: right;
+    text-align: right;
+    height: auto;
+    color: darkred;
+    font-size: .5vw;
+    font-weight: 800;
+}
+
+.questionBody {
+    position: relative;
+    width: 100%;
+    height: auto;
+    float: left;
+    margin: .2vw 0;
+}
+
+.questionBody [type=text] {
+    position: relative;
+    width: 80%;
+    float: left;
+    height: auto;
+    font-size: 1.2vw;
+    padding: .3vw;
+    border-radius: 5px;
+    border: 1px solid var(--box-boder);
+    font-family: 'Comfortaa', sans-serif;
+}
+.questionBody .winner {
+    position: relative;
+    width: 3.5vw;
+    float: right;
+    height: auto;
+    padding: .4vw;
+    border-radius: 5px;
+    background: var(--box-boder);
+    color: white;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: .6vw;
+}
+.questionBody .topwinner {
+    color: white;
+    background: var(--headline-color);
+}
+
+
+/* TRIVIA QUESTION MODULE */

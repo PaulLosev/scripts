@@ -13,12 +13,14 @@
         // endregion
         // region class const
         const TRIVIA_QUESTIONS_TABLE = 'triviaQuestions';
+        const TRIVIA_QUESTIONS_GROPUS = 'trivQuestionsGroups';
         // endregion
         // region const for localization
         const ANSWER = 'Answer';
         const QUESTION = 'Question';
         const RIGHT_ANSWER = 'Right Answer';
-        const REQUIRED_FIELD = '*required';
+        const ADD_GROUP = 'Add Group';
+        const SAVE_BUTTON = 'save';
         // endregion
         // region class methods
         public function getTriviaQuestionsData() {
@@ -33,6 +35,20 @@
             return $stmt->fetchAll(PDO::FETCH_ASSOC) ?? '';
         }// end getTriviaQuestionsData()
         /**
+         * method returns trvia question groups
+         * @return array|false|string
+         */
+        public function getQuestionGroups() {
+            // query
+            $query = 'select `group`
+                        from `' . self::TRIVIA_QUESTIONS_GROPUS . '`';
+            // prepare & run
+            $stmt = $this->connect()->prepare($query);
+            $stmt->execute();
+            // return array
+            return $stmt->fetchAll(PDO::FETCH_ASSOC) ?? '';
+        }// end getQuestionGroups()
+        /**
          * method build trivia qustion module
          * @return void
          */
@@ -46,8 +62,10 @@
                             foreach ($data as $question) {
                                 // cast qid for adding a new question
                                 $qid = empty($question['id']) === false ? ' qid="' . $question['id'] . '"' : '';
+                                // cast winner answer
+                                $winnerAnswer = empty($question['winnerAnswer']) === false ? 'winner="' .$question['winnerAnswer'] . '"' : '';
                                 // start container
-                           echo '<div class="questionContainer" ' . $qid . '>';
+                           echo '<div class="questionContainer" ' . $qid . $winnerAnswer . '>';
                                 // set top answer
                                 $topAnswer = empty($question['winnerAnswer']) === false ? $question['winnerAnswer'] : '';
                                 // remove keys
@@ -70,26 +88,32 @@
                                         // build inputs
                                         echo '<div class="questionBody">
                                                <label>' . $moduleHead . '</label>
-                                               <span class="validationError">' . self::REQUIRED_FIELD . '</span>
+                                               <span class="errorCode"></span>
                                                <input type="text" name="' . $key . '" value="' . $value . '" />';
                                         echo $rightQuestion . '
                                           </div>';
                                     } else {
                                         // build select
                                         echo '<div class="questionBody">
-                                               <label>' .$key . '</label>
-                                               <span class="validationError">' . self::REQUIRED_FIELD . '</span>
+                                               <label>' . $key . '</label>
+                                               <span class="errorCode"></span>
                                                <select name="' . $key . '">
-                                                    <option value="">-</option>
-                                                    <option value="0">Movies</option>
-                                                    <option value="1">Action</option>
+                                                    <option value="">-</option>';
+                                        // build drop down with groups
+                                        foreach ($this->getQuestionGroups() as $group) {
+                                            // selected
+                                            $selected = $value === $group['group'] ? 'selected' : 'none';
+                                            echo '<option value="' . strtolower($group['group']) . '" ' . $selected . '>' . ucfirst($group['group']) . '</option>';
+                                        }// end foreach()
+                                        echo '<option value=""></option>
+                                              <option value="addGroup">' . self::ADD_GROUP . '</option>
                                                </select>
                                              </div>';
                                     }// end if
                                 }// end foreach()
                                 // save method
                                 echo '<div class="saveMethod">
-                                        <button>SAVE</button>
+                                        <button>' . self::SAVE_BUTTON . '</button>
                                       </div>
                                 </div>';
                             }// end foreach()

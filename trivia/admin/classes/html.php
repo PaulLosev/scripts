@@ -54,7 +54,7 @@ class html {
         // return project footer
         echo '</div>
                 </body>                            
-                <script src="/trivia/admin/js/modules.js?' . time(). '"></script>
+                <script src="/trivia/admin/js/addTriviaQuestions.js?' . time(). '"></script>
               </html>' . PHP_EOL;
         // endregion
     }// end projectFooter()

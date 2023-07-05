@@ -100,7 +100,7 @@ html, body {
     text-transform: uppercase;
 }
 
-.questionBody .validationError {
+.questionBody .errorCode {
     position: relative;
     width: 78%;
     float: right;

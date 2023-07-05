@@ -62,6 +62,7 @@
                         change: function() {
                             // get Add Group value
                             let addGroup = $(this).val();
+                            // set add new group  method
                             addGroup === 'addGroup'
                                 ? console.log('call add method')
                                 : ''

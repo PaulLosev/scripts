@@ -151,21 +151,29 @@ html, body {
     margin: .2vw 0;
 }
 
-.saveMethod button {
+.saveMethod {
     position: relative;
     width: 10vw;
     float: right;
     height: auto;
-    font-size: .8vw;
     padding: .3vw;
     margin-top: .5vw;
     border-radius: 5px;
-    border: none;
-    color: white;
     background: var(--save-button);
-    cursor: pointer;
     font-family: 'Comfortaa', sans-serif;
     transition: .2s;
+}
+
+.saveMethod button {
+    position: relative;
+    padding: .3vw;
+    border-radius: 5px;
+    width: 10vw;
+    font-size: .8vw;
+    border: none;
+    color: white;
+    background: none;
+    cursor: pointer;
 }
 
 .questionBody .winner {
@@ -183,6 +191,21 @@ html, body {
     transition: .2s;
 }
 
+.errorPopup {
+    position: absolute;
+    right: -9vw;
+    top: 8vw;
+    width: 6vw;
+    height: auto;
+    padding: 1vw;
+    border-radius: 5px;
+    background: #D35400;
+    font-size: .8vw;
+    color: white;
+    box-shadow: 2px 2px 0 var(--box-boder);
+    display: none;
+}
+
 .questionBody .topWinner {
     color: white;
     background: var(--headline-color);
@@ -193,7 +216,7 @@ html, body {
     background: var(--headline-color);
 }
 
-.saveMethod button:hover {
+.saveMethod:hover {
     color: white;
     background: var(--save-button-hover);
 }

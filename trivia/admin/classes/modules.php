@@ -65,7 +65,8 @@
                                 // cast winner answer
                                 $winnerAnswer = empty($question['winnerAnswer']) === false ? 'winner="' .$question['winnerAnswer'] . '"' : '';
                                 // start container
-                           echo '<div class="questionContainer" ' . $qid . $winnerAnswer . '>';
+                           echo '<div class="questionContainer" ' . $qid . $winnerAnswer . '>
+                                    <div class="errorPopup">Warning</div>';
                                 // set top answer
                                 $topAnswer = empty($question['winnerAnswer']) === false ? $question['winnerAnswer'] : '';
                                 // remove keys

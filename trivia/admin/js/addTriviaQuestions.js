@@ -10,6 +10,8 @@
             this.data = [];
             // region system wording
             this.requiredInput = '*required field';
+            // right answer popup wording
+            this.popupError = 'Please set the right answer';
             // save path
             this.saveQuestionsData = '/trivia/admin/ajaxCall/saveQuestionsData.php';
         }// end constructor()
@@ -35,6 +37,8 @@
                 let questionBody = questionContainer.find('.questionBody');
                 // get all Right answer containers
                 let AllRightAnswers = questionContainer.find('.winner');
+                // get submit button
+                let submit = questionContainer.find('.saveMethod button');
                 // set actions
                 questionBody.each((qnum, qInpupt) => {
                     // get question container data
@@ -45,6 +49,8 @@
                     let rightAnswer = that.find('.winner');
                     // get select container
                     let groupSelector = that.find('select');
+                    // get error popup
+                    let errorPopup = $(object).find('.errorPopup');
                     // set actions
                     rightAnswer.on({
                         click: function() {
@@ -54,7 +60,12 @@
                             AllRightAnswers.removeClass('topWinner');
                             // transmit value to the parent
                             questionContainer.attr('winner', value);
+                            // set a set of actions
                             $(this).addClass('topWinner');
+                            submit.show('drop', 'fast', () => {
+                                errorPopup.hide('drop', {direction: 'right'}, 'fast');
+                            })// end show()
+                            // end region set a set of actions
                         }// end click()
                     })// end on()
                     // set action for select container
@@ -84,6 +95,7 @@
                     click: function () {
                         moduleBuild.validateInput(object);
                         moduleBuild.presaveMethod(moduleBuild.data, totalOfall);
+                        moduleBuild.validateRightAnswers(object);
                     }// end click()
                 })// end On()
             })// end each()
@@ -112,8 +124,23 @@
                     ? error.html(moduleBuild.requiredInput).show()
                     : moduleBuild.pushValue(value, qid, rightAnswer, error);
             });
-            //console.log(this.data);
         }// end validateInput()
+        // method validates right answer buttons
+        validateRightAnswers(object) {
+            // get right answer value from the parent container
+            let value = $(object).attr('winner');
+            // get right answer container
+            let container = $(object).find('.winner');
+            // get error popup
+            let errorPopup = $(object).find('.errorPopup');
+            // get submit button
+            let submit = $(object).find('.saveMethod button');
+            // set notifications
+            if (value === undefined) {
+                errorPopup.text(this.popupError).show('drop', {direction: 'right'}, 'fast');
+                submit.hide('fold', 'fast');
+            }// end if()
+        }// end validateRightAnswers()
         /**
          * method pushes values to the parent array
          * @param value

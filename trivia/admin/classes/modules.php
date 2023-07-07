@@ -20,6 +20,7 @@
         const QUESTION = 'Question';
         const RIGHT_ANSWER = 'Right Answer';
         const ADD_GROUP = 'Add Group';
+        const GROUP_HEADLINE = 'Group';
         const SAVE_BUTTON = 'save';
         // endregion
         // region class methods
@@ -66,12 +67,30 @@
                                 $winnerAnswer = empty($question['winnerAnswer']) === false ? 'winner="' .$question['winnerAnswer'] . '"' : '';
                                 // start container
                            echo '<div class="questionContainer" ' . $qid . $winnerAnswer . '>
-                                    <div class="errorPopup">Warning</div>';
+                                    <div class="errorPopup"></div>';
                                 // set top answer
                                 $topAnswer = empty($question['winnerAnswer']) === false ? $question['winnerAnswer'] : '';
+                                // build select
+                                echo '<div class="questionBody">
+                                          <label>' . self::GROUP_HEADLINE . '</label>
+                                          <span class="errorCode"></span>
+                                          <select name="' . $question['group'] . '">
+                                          <option value="">-</option>';
+                                // build drop down with groups
+                                foreach ($this->getQuestionGroups() as $group) {
+                                    // selected
+                                    $selected = $group['group'] === $question['group'] ? 'selected' : 'none';
+                                    echo '<option value="' . strtolower($group['group']) . '" ' . $selected . '>' . ucfirst($group['group']) . '</option>';
+                                }// end foreach()
+                                echo '<option value=""></option>
+                                              <option value="" point="true">' . self::ADD_GROUP . '</option>
+                                               </select>
+                                             </div>';
                                 // remove keys
+                                // unset data sets to build questions
                                 unset($question['id']);
                                 unset($question['winnerAnswer']);
+                                unset($question['group']);
                                 // set questions
                                 foreach ($question as $key => $value) {
                                     // assign top answer class to inputs
@@ -85,32 +104,13 @@
                                     // set headers
                                     $moduleHead = ($key !== 'question') ? self::ANSWER : self::QUESTION;
                                     // build form items (input vs select)
-                                    if ($key !== 'group') {
-                                        // build inputs
-                                        echo '<div class="questionBody">
+                                    // build inputs
+                                    echo '<div class="questionBody">
                                                <label>' . $moduleHead . '</label>
                                                <span class="errorCode"></span>
                                                <input type="text" name="' . $key . '" value="' . $value . '" />';
-                                        echo $rightQuestion . '
+                                    echo $rightQuestion . '
                                           </div>';
-                                    } else {
-                                        // build select
-                                        echo '<div class="questionBody">
-                                               <label>' . $key . '</label>
-                                               <span class="errorCode"></span>
-                                               <select name="' . $key . '">
-                                                    <option value="">-</option>';
-                                        // build drop down with groups
-                                        foreach ($this->getQuestionGroups() as $group) {
-                                            // selected
-                                            $selected = $value === $group['group'] ? 'selected' : 'none';
-                                            echo '<option value="' . strtolower($group['group']) . '" ' . $selected . '>' . ucfirst($group['group']) . '</option>';
-                                        }// end foreach()
-                                        echo '<option value=""></option>
-                                              <option value="addGroup">' . self::ADD_GROUP . '</option>
-                                               </select>
-                                             </div>';
-                                    }// end if
                                 }// end foreach()
                                 // save method
                                 echo '<div class="saveMethod">

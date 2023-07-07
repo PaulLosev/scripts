@@ -8,12 +8,22 @@
             this.triviaParent = $('.triviaQuestionContainer').find('.questionContainer');
             // form data
             this.data = [];
+            // drop down return value
+            this.dropReturn = '';
             // region system wording
             this.requiredInput = '*required field';
             // right answer popup wording
             this.popupError = 'Please set the right answer';
+            // add group wording
+            this.addGroupWording = 'Add Group';
+            // plceholder wording
+            this.containerPlaceholder = 'start typing..';
+            // save button wording
+            this.saveButtonWording = 'add group';
             // save path
             this.saveQuestionsData = '/trivia/admin/ajaxCall/saveQuestionsData.php';
+            // add group path
+            this.addGroupPath = '/trivia/admin/ajaxCall/addGroup.php'
         }// end constructor()
         //
         questionMode() {
@@ -72,16 +82,102 @@
                     groupSelector.on({
                         change: function() {
                             // get Add Group value
-                            let addGroup = $(this).val();
+                            // get add group attr
+                            let addGroup = $(this).find(':selected').attr('point');
                             // set add new group  method
-                            addGroup === 'addGroup'
-                                ? console.log('call add method')
+                            addGroup === 'true'
+                                ? moduleBuild.addGroup(object)
                                 : ''
                         }// end change()
                     })// end On()
                 })// end each()
             })// end each()
         }// setModuleData()
+        // set add group functionality
+        addGroup(object) {
+            // build add group container
+            this.addGroupBuilder(object);
+            // get popup container
+            let popup = $(object).find('.questionBodyaddGroup');
+            // get close button
+            let close = popup.find('.closePopupContainer span');
+            // save new group
+            this.saveGroup(popup);
+            // set action to close the popup
+            close.on({
+                click: function() {
+                    // close popup
+                    popup.hide('fade', {direction: 'top'}, 'fast');
+                }// end click()s
+            })// end On()
+        }// end addGroup()
+        // save group
+        saveGroup(object) {
+            // get submit button
+            let submit = $(object).find('.save');
+            // get error container
+            let error = $(object).find('.errorCode');
+            // validate
+            submit.on({
+                click: function() {
+                    // get input
+                    let input = $(object).find('input[type=text]');
+                    // return validation
+                    moduleBuild.validateInput(object);
+                    moduleBuild.presaveMethod(moduleBuild.data, 1, moduleBuild.addGroupPath);
+                }// end click()
+            })// end On()
+        }// end saveGroup()
+        // build add group container
+        addGroupBuilder(object) {
+            // build add group container
+            // get parent container
+            let parent = $(object);
+            // parent ct
+            let parentGroupContainer = document.createElement('div');
+            parentGroupContainer.className = 'questionBodyaddGroup';
+            // close button container
+            let close = document.createElement('div');
+            close.className = 'closePopupContainer';
+            // popup close button
+            let closeButton = document.createElement('span');
+            let closeButtonWording = document.createTextNode('X');
+            closeButton.append(closeButtonWording);
+            // build close button
+            close.append(closeButton);
+            // cover up container
+            let coverUp = document.createElement('div');
+            coverUp.className = 'coverUp';
+            // label + wording
+            let lable = document.createElement('label');
+            let lableWording = document.createTextNode(this.addGroupWording);
+            lable.append(lableWording);
+            // error container
+            let error = document.createElement('span');
+            error.className = 'errorCode';
+            // input
+            let inputCT = document.createElement('input');
+            inputCT.type = 'text';
+            inputCT.name = 'newGroup';
+            inputCT.placeholder = this.containerPlaceholder;
+            // button container
+            let button = document.createElement('div');
+            button.className = 'winner';
+            // button
+            let saveButton = document.createElement('button');
+            saveButton.className = 'save';
+            // button wording
+            let buttonBody = document.createTextNode(this.saveButtonWording);
+            saveButton.append(buttonBody);
+            // build button
+            button.append(saveButton);
+            // cover up
+            coverUp.append(lable, error, inputCT, button);
+            // add to the container
+            parentGroupContainer.append(close, coverUp);
+            // add to the parent container
+            return parent.append(parentGroupContainer);
+        }// end addGroupBuilder()
         // validate inputs
         validate() {
             // validate module
@@ -94,7 +190,7 @@
                 saveButton.on({
                     click: function () {
                         moduleBuild.validateInput(object);
-                        moduleBuild.presaveMethod(moduleBuild.data, totalOfall);
+                        moduleBuild.presaveMethod(moduleBuild.data, totalOfall, moduleBuild.saveQuestionsData);
                         moduleBuild.validateRightAnswers(object);
                     }// end click()
                 })// end On()
@@ -156,11 +252,11 @@
          * presave method validates all inputs returned validated
          * @param data
          */
-        presaveMethod(data, total) {
+        presaveMethod(data, total, path) {
             // count total of all inputs on the form
             // set action
             total === data.length
-               ? this.saveMethod(data)
+               ? this.saveMethod(data, path)
                : console.log('%c *required fields', 'color: pink');
         }// end presaveMethod()
         /**
@@ -168,14 +264,14 @@
          * @param data
          * @param type
          */
-        saveMethod(data) {
+        saveMethod(data, path) {
             // set form data class
             let dataSet = new FormData();
             // set data
             dataSet.append('data', JSON.stringify(data));
             // call PHP save method
             // TODO: kill the log after all set and tested
-            console.log(this.ajaxCall(dataSet, this.saveQuestionsData));
+            console.log(this.ajaxCall(dataSet, path));
         }// end saveMethod()
         /**
          * method calls backend for data by eid

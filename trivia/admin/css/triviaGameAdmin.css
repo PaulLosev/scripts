@@ -216,8 +216,100 @@ html, body {
     background: var(--headline-color);
 }
 
+.coverUp .winner .save:hover,
 .saveMethod:hover {
     color: white;
     background: var(--save-button-hover);
 }
 /* TRIVIA QUESTION MODULE */
+
+/* add group container */
+.questionBodyaddGroup {
+    position: absolute;
+    width: 94%;
+    height: 91%;
+    background: white;
+    border-radius: 5px;
+    background: rgba(255,255,255,1);
+    border: 1px solid var(--box-boder);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.closePopupContainer {
+    position: absolute;
+    width: 100%;
+    height: auto;
+}
+
+.closePopupContainer span {
+    position: relative;
+    padding: .3vw;
+    float: right;
+    width: 1vw;
+    height: 1vw;
+    font-size: 1.2vw;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.coverUp {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.coverUp label {
+    position: relative;
+    float: left;
+    width: 80%;
+}
+
+.coverUp input {
+    position: relative;
+    width: 80%;
+    float: left;
+    height: auto;
+    font-size: 1.2vw;
+    padding: .3vw;
+    border-radius: 5px;
+    border: 1px solid var(--box-boder);
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.coverUp .winner {
+    position: relative;
+    height: auto;
+    float: left;
+    margin: .4vw 0;
+}
+
+.questionBodyaddGroup .errorCode {
+    position: relative;
+    height: auto;
+    color: darkred;
+    font-size: .5vw;
+    font-weight: 800;
+}
+
+.coverUp .winner .save {
+    position: relative;
+    width: 10vw;
+    float: right;
+    height: auto;
+    padding: .3vw;
+    margin-top: .5vw;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    background: var(--save-button);
+    font-family: 'Comfortaa', sans-serif;
+    transition: .2s;
+    cursor: pointer;
+}
+/* add group container */

@@ -42,7 +42,19 @@ class html {
                             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
                         </head>
                         <body>
-                        <div id="projectReturnContainer">';
+                        <div id="projectReturnContainer">    
+                            <div class="afterWraperContainer">
+                                <div class="sideBarContainer">
+                                    <div class="cmsLogtypeConatiner">
+                                        <span>trivia</span>
+                                    </div>
+                                    <div class="dynamicMenuContainer">
+                                    </div>
+                            </div>
+                            <div class="returnContainer">
+                                Test
+                            </div>
+                        </div>';
         // endregion
     }// end projectHead()
     /**
@@ -54,6 +66,7 @@ class html {
         // return project footer
         echo '</div>
                 </body>                            
+                <script src="/trivia/admin/js/projectNavigation.js?' . time(). '"></script>
                 <script src="/trivia/admin/js/addTriviaQuestions.js?' . time(). '"></script>
               </html>' . PHP_EOL;
         // endregion

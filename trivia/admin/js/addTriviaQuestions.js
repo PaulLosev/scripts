@@ -86,7 +86,7 @@
                             let addGroup = $(this).find(':selected').attr('point');
                             // set add new group  method
                             addGroup === 'true'
-                                ? moduleBuild.addGroup(object)
+                                ? moduleBuild.addGroup(object, qInpupt, this)
                                 : ''
                         }// end change()
                     })// end On()
@@ -94,7 +94,7 @@
             })// end each()
         }// setModuleData()
         // set add group functionality
-        addGroup(object) {
+        addGroup(object, qInpupt, that) {
             // build add group container
             this.addGroupBuilder(object);
             // get popup container
@@ -102,7 +102,7 @@
             // get close button
             let close = popup.find('.closePopupContainer span');
             // save new group
-            this.saveGroup(popup);
+            this.saveGroup(popup, qInpupt, popup, that);
             // set action to close the popup
             close.on({
                 click: function() {
@@ -112,7 +112,7 @@
             })// end On()
         }// end addGroup()
         // save group
-        saveGroup(object) {
+        saveGroup(object, qInpupt, popup, that) {
             // get submit button
             let submit = $(object).find('.save');
             // get error container
@@ -122,12 +122,31 @@
                 click: function() {
                     // get input
                     let input = $(object).find('input[type=text]');
-                    // return validation
-                    moduleBuild.validateInput(object);
-                    moduleBuild.presaveMethod(moduleBuild.data, 1, moduleBuild.addGroupPath);
+                    // set vs unset
+                    if (input.val() !== '') {
+                        // return validation
+                        moduleBuild.afterSaveGroup(input.val(), qInpupt, popup);
+                        // remove add group module
+                        $(that).parent().parent().find('.questionBodyaddGroup').remove();
+                    } else {
+                        // show error code
+                        error.html(moduleBuild.requiredInput);
+                        // shake the parent a bit
+                        $(object).effect('shake', 'fast');
+                    }// end if
                 }// end click()
             })// end On()
         }// end saveGroup()
+        // method update current slect with a new value
+        afterSaveGroup(value, qInpupt, popup) {
+            // find selected option
+            let selected = $(qInpupt).find(':selected');
+            // set selected to current value
+            $(selected).val(value);
+            $(selected).text(value);
+            popup.hide('fade', {direction: 'top'}, 'fast');
+            // build add group container
+        }// end afterSaveGroup()
         // build add group container
         addGroupBuilder(object) {
             // build add group container
@@ -190,8 +209,9 @@
                 saveButton.on({
                     click: function () {
                         moduleBuild.validateInput(object);
-                        moduleBuild.presaveMethod(moduleBuild.data, totalOfall, moduleBuild.saveQuestionsData);
                         moduleBuild.validateRightAnswers(object);
+                        console.log(moduleBuild.presaveMethod(moduleBuild.data, totalOfall, moduleBuild.saveQuestionsData));
+                        console.log(moduleBuild.data);
                     }// end click()
                 })// end On()
             })// end each()
@@ -255,7 +275,7 @@
         presaveMethod(data, total, path) {
             // count total of all inputs on the form
             // set action
-            total === data.length
+            return total === data.length
                ? this.saveMethod(data, path)
                : console.log('%c *required fields', 'color: pink');
         }// end presaveMethod()
@@ -270,8 +290,7 @@
             // set data
             dataSet.append('data', JSON.stringify(data));
             // call PHP save method
-            // TODO: kill the log after all set and tested
-            console.log(this.ajaxCall(dataSet, path));
+            return this.ajaxCall(dataSet, path);
         }// end saveMethod()
         /**
          * method calls backend for data by eid

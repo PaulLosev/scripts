@@ -16,6 +16,6 @@
     // set admin html
     $html->projectHead();
     // set module
-    $modules->triviaQuestions();
+    // $modules->triviaQuestions();
     // set admin html
     $html->projectFooter();

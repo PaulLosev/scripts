@@ -2,7 +2,7 @@
     --popup-background: black;
     --box-shadow: rgba(0,0,0.3);
     --box-boder: rgba(0,0,0,.1);
-    --box-color: white;
+    --box-color: rgba(255,255,255,.7);
     --headline-color: #2471A3;
     --save-button: #16A085;
     --save-button-hover: #138D75;
@@ -15,6 +15,8 @@
 
 html, body {
     -webkit-font-smoothing: antialiased;
+    height: 100vh;
+    background: #444961;
 }
 
 ::placeholder {
@@ -27,7 +29,7 @@ html, body {
     position: relative;
     float: left;
     width: 100%;
-    height: auto;
+    height: 100%;
     padding: 0;
     margin: 0;
     display: flex;
@@ -35,17 +37,202 @@ html, body {
     align-content: center;
 }
 
-#projectReturnContainer {
+.afterWraperContainer {
     position: relative;
-    float: left;
     width: 100%;
     height: auto;
-    padding: 0;
-    margin: 0;
+    float: left;
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
 }
+
+.sideBarContainer {
+    position: relative;
+    width: 19.5%;
+    height: 98%;
+    float: left;
+    margin-right: .7vw;
+    margin-left: .7vw;
+    border-radius: 5px;
+    color: white;
+    background: rgba(215, 219, 221, .2);
+}
+
+.returnContainer {
+    position: relative;
+    color: white;
+    width: 79.5%;
+    height: 98%;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: .7vw;
+    background: rgba(215, 219, 221, .2);
+    border-radius: 5px;
+}
+
+.dynamicMenuContainer {
+    position: relative;
+    width: 100%;
+    height: 93.75%;
+    float: left;
+    font-size: 2vw;
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 300;
+    background: #40665C;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.cmsLogtypeConatiner {
+    position: relative;
+    width: 100%;
+    height: auto;
+    float: left;
+    font-size: 3vw;
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 300;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: #D6BD6B;
+    color: #40665C;
+    box-shadow: none;
+    border: none;
+}
+
+.dynamicMenuContainer span,
+.cmsLogtypeConatiner span, ul {
+    position: relative;
+    left: .8vw;
+}
+
+.dynamicMenuContainer span {
+    font-size: .8vw;
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 900;
+}
+
+.navigationControlsContainer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    font: left;
+}
+
+.addQuestionContainer {
+    position: relative;
+    width: 97%;
+    height: auto;
+    float: left;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.addQuestionContainer button {
+    border: none;
+    background: none;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    transition: .2s;
+    cursor: pointer;
+    padding: .1vw .2vw;
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,.4);
+}
+
+#backButton {
+    position: relative;
+    font-size: 1vw;
+    top: .78vw;
+    right: 1vw;
+    float: right;
+    width: auto;
+    height: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    transition: .2s;
+}
+
+.questionBodyContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    float: left;
+}
+
+#deleteQuestion {
+    position: absolute;
+    top: .32vw;
+    right: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#deleteQuestion input {
+    width: 1vw;
+    height: 1vw;
+    cursor: pointer;
+    transition: .2s;
+}
+
+/* NAVIGATION */
+.dynamicMenuContainer ul {
+    position: relative;
+    width: 90%;
+    height: auto;
+    float: left;
+    list-style: none;
+}
+
+.dynamicMenuContainer li {
+    font-size: .9vw;
+    font-weight: 300;
+    margin: .2vw 0;
+    cursor: pointer;
+    color: var(--box-color);
+    transition: .2s;
+}
+
+.addQuestionContainer button:hover {
+    background: #D6BD6B;
+    border: 1px solid #D6BD6B;
+    color: #40665C;
+}
+
+#backButton:hover,
+.dynamicMenuContainer li:hover {
+    color: #D6BD6B;
+}
+
+#deleteQuestion input:hover {
+    transform: scale(1.6);
+}
+
+.sideBarContainer:after {
+    content: '\00A9';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: .5vw;
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 300;
+    font-size: .5vw;
+    color: var(--box-color);
+}
+/* NAVIGATION */
 
 /* TRIVIA QUESTION MODULE */
 .triviaQuestionContainer {

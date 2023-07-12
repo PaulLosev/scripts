@@ -13,36 +13,42 @@
         // endregion
         // region class const
         const TRIVIA_QUESTIONS_TABLE = 'triviaQuestions';
-        const TRIVIA_QUESTIONS_GROPUS = 'trivQuestionsGroups';
+        const TRIVIA_QUESTIONS_GROUPS = 'trivQuestionsGroups';
         // endregion
         // region const for localization
         const ANSWER = 'Answer';
         const QUESTION = 'Question';
         const RIGHT_ANSWER = 'Right Answer';
         const ADD_GROUP = 'Add Group';
+        const INPUT_PLACEHOLDER = 'start typing..';
         const GROUP_HEADLINE = 'Group';
         const SAVE_BUTTON = 'save';
         // endregion
         // region class methods
-        public function getTriviaQuestionsData() {
-            // get all trivial questions
+        /**
+         * method populates question array with the data
+         * @param $qid
+         * @return array|bool
+         */
+        public function getTriviaQuestionsData($qid):?array {
+            // get questions
             $query = 'select *
-                        from ' . self::TRIVIA_QUESTIONS_TABLE;
-
-            // prepare and run
+                        from ' . self::TRIVIA_QUESTIONS_TABLE . '
+                       where `id` = :qid';
+            // prepare & run
             $stmt = $this->connect()->prepare($query);
-            $stmt->execute();
-            // return data array
-            return $stmt->fetchAll(PDO::FETCH_ASSOC) ?? '';
+            $stmt->execute([':qid' => $qid]);
+            // return data
+            return $stmt->fetch(PDO::FETCH_ASSOC) ?? '';
         }// end getTriviaQuestionsData()
         /**
-         * method returns trvia question groups
+         * method returns trivia question groups
          * @return array|false|string
          */
         public function getQuestionGroups() {
             // query
             $query = 'select `group`
-                        from `' . self::TRIVIA_QUESTIONS_GROPUS . '`';
+                        from `' . self::TRIVIA_QUESTIONS_GROUPS . '`';
             // prepare & run
             $stmt = $this->connect()->prepare($query);
             $stmt->execute();
@@ -50,51 +56,66 @@
             return $stmt->fetchAll(PDO::FETCH_ASSOC) ?? '';
         }// end getQuestionGroups()
         /**
-         * method build trivia qustion module
-         * @return void
+         * method returns empty array to build add question form
+         * @return string[]
          */
-        public function triviaQuestions() {
-            // get all trivial questions
-            $data = $this->getTriviaQuestionsData();
+        public function addQuestion():array {
+            // return array
+            return [
+                'id' => '',
+                'question' => '',
+                'answerOne' => '',
+                'answerTwo' => '',
+                'answerThree' => '',
+                'winnerAnswer' => '',
+                'group' => '',
+            ];
+        }// end addQuestion()
+        /**
+         * method builds question module
+         */
+        public function triviaQuestions($post) {
+            // cast the data according to the qid
+            $data = empty($post['qid']) === false
+                ? $this->getTriviaQuestionsData($post['qid'])
+                : $this->addQuestion();
             // set module html
             echo '<div class="triviaQuestionContainer">
                       <div class="triviaQuestionBody">';
-                            // set inputs html
-                            foreach ($data as $question) {
-                                // cast qid for adding a new question
-                                $qid = empty($question['id']) === false ? ' qid="' . $question['id'] . '"' : '';
-                                // cast winner answer
-                                $winnerAnswer = empty($question['winnerAnswer']) === false ? 'winner="' .$question['winnerAnswer'] . '"' : '';
-                                // start container
-                           echo '<div class="questionContainer" ' . $qid . $winnerAnswer . '>
-                                    <div class="errorPopup"></div>';
-                                // set top answer
-                                $topAnswer = empty($question['winnerAnswer']) === false ? $question['winnerAnswer'] : '';
-                                // build select
-                                echo '<div class="questionBody">
-                                          <label>' . self::GROUP_HEADLINE . '</label>
-                                          <span class="errorCode"></span>
-                                          <select name="' . $question['group'] . '">
-                                          <option value="">-</option>';
-                                // build drop down with groups
-                                foreach ($this->getQuestionGroups() as $group) {
-                                    // selected
-                                    $selected = $group['group'] === $question['group'] ? 'selected' : 'none';
-                                    echo '<option value="' . strtolower($group['group']) . '" ' . $selected . '>' . ucfirst($group['group']) . '</option>';
-                                }// end foreach()
-                                echo '<option value=""></option>
-                                              <option value="" point="true">' . self::ADD_GROUP . '</option>
-                                               </select>
-                                             </div>';
+                            // cast qid for adding a new question method
+                            $qid = empty($data['id']) === false ? ' qid="' . $data['id'] . '"' : '';
+                            // cast winner answer
+                            $winnerAnswer = empty($data['winnerAnswer']) === false ? 'winner="' .$data['winnerAnswer'] . '"' : '';
+                            // start container
+                echo '<div class="questionContainer" ' . $qid . $winnerAnswer . '>
+                           <div class="errorPopup"></div>';
+                           // set top answer
+                           $topAnswer = empty($data['winnerAnswer']) === false ? $data['winnerAnswer'] : '';
+                           // build select
+                           echo '<div class="questionBody">
+                                     <label>' . self::GROUP_HEADLINE . '</label>
+                                     <span class="errorCode"></span>
+                                     <select name="' . $data['group'] . '">
+                                         <option value="">-none-</option>';
+                                         // build drop down with groups
+                                         foreach ($this->getQuestionGroups() as $group) {
+                                             // selected
+                                             $selected = $group['group'] === $data['group'] ? 'selected' : 'none';
+                                             echo '<option value="' . strtolower($group['group']) . '" ' . $selected . '>' . ucfirst($group['group']) . '</option>';
+                                         }// end foreach()
+                           echo '<option value=""></option>
+                                 <option value="" point="true">' . self::ADD_GROUP . '</option>
+                                      </select>
+                                 </div>';
                                 // remove keys
                                 // unset data sets to build questions
-                                unset($question['id']);
-                                unset($question['winnerAnswer']);
-                                unset($question['group']);
+                                unset($data['id']);
+                                unset($data['winnerAnswer']);
+                                unset($data['group']);
                                 // set questions
-                                foreach ($question as $key => $value) {
+                                foreach ($data as $key => $value) {
                                     // assign top answer class to inputs
-                                    $answer = ($value === $topAnswer) ? 'topWinner' : '';
+                                    $answer = ($value === $topAnswer) ? (empty($value) === false ? 'topWinner' : '') : '';
                                     // set winner answer container
                                     $winner = '<div class="winner ' . $answer . '">' . self::RIGHT_ANSWER . '</div>';
                                     // set apply right answer to answers only
@@ -108,7 +129,7 @@
                                     echo '<div class="questionBody">
                                                <label>' . $moduleHead . '</label>
                                                <span class="errorCode"></span>
-                                               <input type="text" name="' . $key . '" value="' . $value . '" />';
+                                               <input type="text" name="' . $key . '" value="' . $value . '" placeholder="' . self::INPUT_PLACEHOLDER . '" />';
                                     echo $rightQuestion . '
                                           </div>';
                                 }// end foreach()
@@ -117,9 +138,9 @@
                                         <button>' . self::SAVE_BUTTON . '</button>
                                       </div>
                                 </div>';
-                            }// end foreach()
                 echo '</div>
-                  </div>' . PHP_EOL;
+                  </div>
+                  <script src="/trivia/admin/js/addTriviaQuestions.js?' . time(). '"></script>' . PHP_EOL;
         }// end triviaQuestion()
         // endregion
     }// end modules()

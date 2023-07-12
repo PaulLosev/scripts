@@ -15,7 +15,6 @@ class html {
      * method sets the html for the project
      * head
      * @return void
-     *
      */
     public function projectHead() {
         // return project head
@@ -52,7 +51,7 @@ class html {
                                     </div>
                             </div>
                             <div class="returnContainer">
-                                Test
+                                 <!-- ./ return -->
                             </div>
                         </div>';
         // endregion
@@ -67,7 +66,6 @@ class html {
         echo '</div>
                 </body>                            
                 <script src="/trivia/admin/js/projectNavigation.js?' . time(). '"></script>
-                <script src="/trivia/admin/js/addTriviaQuestions.js?' . time(). '"></script>
               </html>' . PHP_EOL;
         // endregion
     }// end projectFooter()

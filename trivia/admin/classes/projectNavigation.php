@@ -11,17 +11,18 @@
      */
     class projectNavigation extends dbconnect {
         // region class properties
-        // end region
+        // endregion
         // region class const
         const TRIVIA_QUESTIONS_TABLE = 'triviaQuestions';
         const BACK_BUTTON_WORDING = '&larr;';
         // endregion
         // region class methods
         /**
+         * system option setter
          * @param $post
          * @return void
          */
-        public function buildNagivation($post) {
+        public function buildNavigation($post) {
             // set construction
             switch ($post['method']) {
                 case 'questions':
@@ -30,12 +31,12 @@
                 default:
                     $this->defaultNavigation();
             }// end switch()
-        }// end buildNagivation()
+        }// end buildNavigation()
         /**
-         * method retunr questions array
-         * @return array|false|string
+         * method returns question array for edit question method
+         * @return array
          */
-        public function getAllQuetions() {
+        public function getAllQuestions():array {
             // query
             $select = 'select `id`,
                               `question`
@@ -45,40 +46,41 @@
             $stmt->execute();
             // return data
             return $stmt->fetchAll(PDO::FETCH_ASSOC) ?? '';
-        }// end getAllQuetions()
+        }// end getAllQuestions()
         /**
-         * method sets navigation items
+         * method sets navigation items for add question method
          * @return string[]
          */
         public function navigationData(): array {
             // return navigation array
             return [
-                'Dashboard' => 'dahsboard',
-                'Reg Form Settings' => 'questions',
+                'Dashboard' => 'dashboard',
+                'Registration Form Settings' => 'questions',
                 'Users' => 'users',
                 'Settings' => 'settings',
             ];
         }// end navigationData()
         /**
-         * method build default navigation set
+         * method builds default navigation set
          * @return void
          */
         public function defaultNavigation() {
-            // set headline
+            // headline
             echo '<div class="navigationControlsContainer">
                     <div>
                         <span>navigation</span>
                     </div>
                   </div>
-            <!-- set dafult navigation html -->
+            <!-- dafult navigation html -->
             <ul>';
-            // build dafult items
+            // build default items
             foreach($this->navigationData() as $item => $key) {
                 echo '<li catalog="' . $key . '">' . $item . '</li>';
             }// end foreach()
             echo '</ul>';
         }// end defaultNavigation()
         /**
+         * method build custom navigation for questions on the registration form
          * @param $headline
          * @return void
          */
@@ -95,16 +97,18 @@
                   </div>
             <!-- set dafult navigation html -->
             <ul>';
-            // build dafult items
-            foreach($this->getAllQuetions() as $item) {
-                echo '<div class="questionBodyContainer">
-                        <li catalog="' . $item['id'] . '">' . $item['question'] . '</li>
+            // build default items
+            foreach($this->getAllQuestions() as $item) {
+                echo '<div class="questionBodyContainer" qid="' . $item['id'] . '">
+                        <li>' . $item['question'] . '</li>
                         <div id="deleteQuestion">
                             <input type="image" src="/trivia/admin/img/delete.png" title="delete question"></input>
                         </div>
                       </div>';
             }// end foreach()
-            echo '</ul>';
+            echo '</ul>
+                  <!-- ./ class connect -->
+                  <script src="/trivia/admin/js/editQuestionFunctions.js?' . time(). '"></script>' . PHP_EOL;
         }// end buildQuestionsCategory()
         // endregion
     }// end projectNavigation{}

@@ -3,7 +3,7 @@
     --box-shadow: rgba(0,0,0.3);
     --box-boder: rgba(0,0,0,.1);
     --box-color: rgba(255,255,255,.7);
-    --headline-color: #2471A3;
+    --headline-color: white;
     --save-button: #16A085;
     --save-button-hover: #138D75;
 }
@@ -23,6 +23,7 @@ html, body {
     font-family: 'Comfortaa', sans-serif;
     font-weight: 300;
     font-size: .8vw;
+    color: var(--box-color);
 }
 
 #projectReturnContainer {
@@ -56,7 +57,7 @@ html, body {
     margin-left: .7vw;
     border-radius: 5px;
     color: white;
-    background: rgba(215, 219, 221, .2);
+    background: #40665C;
 }
 
 .returnContainer {
@@ -65,23 +66,56 @@ html, body {
     width: 79.5%;
     height: 98%;
     float: right;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-right: .7vw;
     background: rgba(215, 219, 221, .2);
     border-radius: 5px;
 }
 
+.returnContainerHeadline {
+    position: relative;
+    width: 100%;
+    height: 3.3vw;
+    float: left;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: none;
+    box-shadow: none;
+    border: none;
+}
+
+.returnContainerHeadline span {
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    width: auto;
+    height: 100%;
+    float: right;
+    font-size: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 2vw;
+    color: rgba(255,255,255,.4);
+}
+
+.returnDataContainer {
+    position: relative;
+    color: white;
+    width: 100%;
+    height: 93.6%;
+    float: right;
+}
+
 .dynamicMenuContainer {
     position: relative;
     width: 100%;
-    height: 93.75%;
+    height: auto;
+    padding: 1vw 0;
     float: left;
     font-size: 2vw;
     font-family: 'Comfortaa', sans-serif;
     font-weight: 300;
-    background: #40665C;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -89,7 +123,7 @@ html, body {
 .cmsLogtypeConatiner {
     position: relative;
     width: 100%;
-    height: auto;
+    height: 3.3vw;
     float: left;
     font-size: 3vw;
     font-family: 'Comfortaa', sans-serif;
@@ -119,6 +153,17 @@ html, body {
     width: 100%;
     height: auto;
     font: left;
+}
+
+.navigationControlsContainer div span {
+    position: relative;
+    left: 0vw;
+    color: #40665C;
+    padding: .1vw .9vw;
+    width: 10vw;
+    background: white;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .addQuestionContainer {
@@ -212,9 +257,19 @@ html, body {
     color: #40665C;
 }
 
+.activeAddButton {
+    background: #D6BD6B!important;
+    border: 1px solid #D6BD6B!important;
+    color: #40665C!important;
+}
+
 #backButton:hover,
 .dynamicMenuContainer li:hover {
     color: #D6BD6B;
+}
+
+.navigationActive {
+    color: #D6BD6B!important;
 }
 
 #deleteQuestion input:hover {
@@ -249,7 +304,7 @@ html, body {
 
 .triviaQuestionBody {
     position: relative;
-    width: 30%;
+    width: 45%;
     height: auto;
     float: left;
     padding: .1vw;
@@ -262,7 +317,7 @@ html, body {
     float: left;
     padding: 1vw;
     border-radius: 5px;
-    background: rgba(255,255,255,1);
+    background: #444961;
     border: 1px solid var(--box-boder);
     box-shadow: 2px 2px 0 var(--box-boder);
     margin: .4vw 0;
@@ -293,7 +348,7 @@ html, body {
     float: right;
     text-align: right;
     height: auto;
-    color: darkred;
+    color: pink;
     font-size: .5vw;
     font-weight: 800;
 }
@@ -315,6 +370,8 @@ html, body {
     padding: .3vw;
     border-radius: 5px;
     border: 1px solid var(--box-boder);
+    background: rgba(255,255,255,.1);
+    color: white;
     font-family: 'Comfortaa', sans-serif;
 }
 
@@ -326,6 +383,8 @@ html, body {
     font-size: 1.2vw;
     padding: .3vw;
     border-radius: 5px;
+    background: rgba(255,255,255,.1);
+    color: white;
     border: 1px solid var(--box-boder);
     font-family: 'Comfortaa', sans-serif;
 }
@@ -386,21 +445,21 @@ html, body {
     height: auto;
     padding: 1vw;
     border-radius: 5px;
-    background: #D35400;
+    background: pink;
     font-size: .8vw;
-    color: white;
+    color: #444961;
     box-shadow: 2px 2px 0 var(--box-boder);
     display: none;
 }
 
 .questionBody .topWinner {
     color: white;
-    background: var(--headline-color);
+    background: #DA8E42;
 }
 
 .questionBody .winner:hover {
     color: white;
-    background: var(--headline-color);
+    background: #DA8E42;
 }
 
 .coverUp .winner .save:hover,
@@ -413,11 +472,12 @@ html, body {
 /* add group container */
 .questionBodyaddGroup {
     position: absolute;
-    width: 94%;
-    height: 91%;
-    background: white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     border-radius: 5px;
-    background: rgba(255,255,255,1);
+    background: #444961;
     border: 1px solid var(--box-boder);
     display: flex;
     justify-content: center;
@@ -465,6 +525,8 @@ html, body {
     font-size: 1.2vw;
     padding: .3vw;
     border-radius: 5px;
+    background: rgba(255,255,255,.1);
+    color: white;
     border: 1px solid var(--box-boder);
     font-family: 'Comfortaa', sans-serif;
 }
@@ -479,7 +541,7 @@ html, body {
 .questionBodyaddGroup .errorCode {
     position: relative;
     height: auto;
-    color: darkred;
+    color: pink;
     font-size: .5vw;
     font-weight: 800;
 }

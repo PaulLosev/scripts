@@ -13,7 +13,8 @@
             // region system wording
             this.requiredInput = '*required field';
             // right answer popup wording
-            this.popupError = 'Please set the right answer';
+            this.popupError = 'Please set the right answer!';
+            this.popupErrorEmpty = 'The answer cannot be empty!';
             // add group wording
             this.addGroupWording = 'Add Group';
             // plceholder wording
@@ -36,6 +37,7 @@
             // endregion
         }// end questionMode()
         // method sets data + methods to populate the module
+        // action method goes upper level before any buttons clicked
         setModuleData() {
             // set module data
             this.triviaParent.each((num, object) => {
@@ -209,9 +211,13 @@
                 saveButton.on({
                     click: function () {
                         moduleBuild.validateInput(object);
-                        moduleBuild.validateRightAnswers(object);
-                        console.log(moduleBuild.presaveMethod(moduleBuild.data, totalOfall, moduleBuild.saveQuestionsData));
-                        console.log(moduleBuild.data);
+                        // if all asnwers are validated + the right answer is picked up
+                        moduleBuild.validateRightAnswers(object) !== false
+                            ? console.log(moduleBuild.presaveMethod(moduleBuild.data, totalOfall, moduleBuild.saveQuestionsData))
+                            : ''
+                        // TODO: return true value from upper method and assign the method below
+                        // call default navigation to update the questions tree in the navigation
+                       // moduleBuild.buildNavModule('questions');
                     }// end click()
                 })// end On()
             })// end each()
@@ -253,8 +259,23 @@
             let submit = $(object).find('.saveMethod button');
             // set notifications
             if (value === undefined) {
+                // remove active class + attribute
+                container.removeClass('topWinner');
+                $(object).removeAttr('winner');
+                // return false by all means
                 errorPopup.text(this.popupError).show('drop', {direction: 'right'}, 'fast');
                 submit.hide('fold', 'fast');
+                // return error code
+                return false;
+            } else if (value === '') {
+                // remove active class + attribute
+                $(object).removeAttr('winner');
+                container.removeClass('topWinner');
+                // return false by all means
+                errorPopup.text(this.popupErrorEmpty).show('drop', {direction: 'right'}, 'fast');
+                submit.hide('fold', 'fast');
+                // return error code
+                return false;
             }// end if()
         }// end validateRightAnswers()
         /**
@@ -292,9 +313,7 @@
             // call PHP save method
             return this.ajaxCall(dataSet, path);
         }// end saveMethod()
-        /**
-         * method calls backend for data by eid
-         */
+        // method calls backend for data by eid
         ajaxCall(data, path) {
             // get data by array values
             return $.ajax({
@@ -305,7 +324,7 @@
                 processData: false,
                 data: data}).responseText;
         }// end ajaxCall()
-        // end region
+        // endregion
     }// end modules
     // set the class instance
     let moduleBuild = new addTriviaQuestions();

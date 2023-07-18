@@ -48,10 +48,11 @@ class html {
                                         <span>trivia</span>
                                     </div>
                                     <div class="dynamicMenuContainer">
+                                          <!-- ./ ajax return -->
                                     </div>
                             </div>
                             <div class="returnContainer">
-                                 <!-- ./ return -->
+                                 <!-- ./ ajax return -->
                             </div>
                         </div>';
         // endregion

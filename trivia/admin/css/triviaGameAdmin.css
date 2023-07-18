@@ -562,3 +562,25 @@ html, body {
     cursor: pointer;
 }
 /* add group container */
+
+/* confirmational popup */
+.confirmationalPopup {
+    position: absolute;
+    bottom: 5vw;
+    right: 5vw;
+    width: auto;
+    height: auto;
+    box-shadow: 2px 0 0 black;
+    box-shadow: 2px 2px 5px -1px rgba(0,0,0,.1);
+    display: none;
+}
+
+.popupBodyContainer {
+    position: relative;
+    float: left;
+    padding: 1vw;
+    border-radius: 5px;
+    background: var(--save-button);
+    color: var(--headline-color);
+}
+/* confirmational popup */

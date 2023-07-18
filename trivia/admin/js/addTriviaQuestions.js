@@ -1,9 +1,10 @@
     /**
      * class addTriviaQuestions
      */
-    class addTriviaQuestions {
+    class addTriviaQuestions extends projectNavigation {
         // region class methods
         constructor() {
+            super();
             // get parent trivia container
             this.triviaParent = $('.triviaQuestionContainer').find('.questionContainer');
             // form data
@@ -212,12 +213,22 @@
                     click: function () {
                         moduleBuild.validateInput(object);
                         // if all asnwers are validated + the right answer is picked up
-                        moduleBuild.validateRightAnswers(object) !== false
-                            ? console.log(moduleBuild.presaveMethod(moduleBuild.data, totalOfall, moduleBuild.saveQuestionsData))
+                        let savedItem = moduleBuild.validateRightAnswers(object) !== false
+                            ? moduleBuild.presaveMethod(moduleBuild.data, totalOfall, moduleBuild.saveQuestionsData)
                             : ''
-                        // TODO: return true value from upper method and assign the method below
-                        // call default navigation to update the questions tree in the navigation
-                       // moduleBuild.buildNavModule('questions');
+
+                        // track console statuses
+                        console.log(savedItem);
+
+                        // set acions
+                        if (savedItem.trim() === 'true') {
+                            // call default navigation to update the questions tree in the navigation
+                            moduleBuild.buildDefaultNavigation('questions');
+                            // call default dash container to refresh the page + header wording
+                            moduleBuild.buildContainer(moduleBuild.editQuestionWording, '');
+                            // show confirmation
+                            moduleBuild.actionConfirm('saved');
+                        }// end if
                     }// end click()
                 })// end On()
             })// end each()

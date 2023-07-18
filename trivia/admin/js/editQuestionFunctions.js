@@ -41,12 +41,14 @@
                 let qid = $(object).attr('qid');
                 // get edit method trigger
                 let trigger = $(object).find('li');
+                // find delete button
+                let deleteButton = $(object).find('#deleteQuestion input');
                 // call edit question method
                 trigger.on({
                     click: function() {
                         console.log('edit call');
                         // set item highlights
-                        console.log(questionWork.navigationReturn.find('.addQuestionContainer button').removeClass('activeAddButton'));
+                        questionWork.navigationReturn.find('.addQuestionContainer button').removeClass('activeAddButton');
                         allQuestions.find('li').removeClass('navigationActive')
                         trigger.addClass('navigationActive');
                         // set method namr
@@ -57,6 +59,12 @@
                         let module = questionWork.ajaxCall(category, questionWork.addQuestionPath);
                         // return add question module
                         questionWork.buildContainer(questionWork.editQuestionWording, module);
+                    }// end click()
+                })// end On()
+                // call delete method
+                deleteButton.on({
+                    click: function() {
+                        console.log(qid);
                     }// end click()
                 })// end On()
             })// end each()

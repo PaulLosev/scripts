@@ -140,6 +140,29 @@
                 processData: false,
                 data: data}).responseText;
         }// end ajaxCall()
+        // confirmation popup logic
+        // to call, set it after TRUE return on each action method
+        // with its own wording
+        actionConfirm(wording) {
+            // build popup
+            let popupParent = document.createElement('div');
+            popupParent.className = 'confirmationalPopup';
+            let pupopBody = document.createElement('div');
+            pupopBody.className = 'popupBodyContainer';
+            let textNode = document.createTextNode(wording);
+            // build
+            pupopBody.append(textNode);
+            popupParent.append(pupopBody);
+            // return popup to the main container
+            this.parentContainer.append(popupParent);
+            // find popup on the list
+            let popupFunctioning = this.parentContainer.find('.confirmationalPopup');
+            $(popupFunctioning).show('drop', {direction: 'right'}, 'fast', (() => {
+                setTimeout(() => {
+                      $(popupFunctioning).hide('drop', {direction: 'right'}, 'fast');
+                }, 3000);
+            }));
+        }// end actionConfirm()
         // endregion
     }// end projectNavigation{}
     // set the class instance

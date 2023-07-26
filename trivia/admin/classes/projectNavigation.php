@@ -94,6 +94,9 @@
                     <div class="addQuestionContainer">
                         <button method="addQuestion">add question</button>
                     </div>
+                    <div class="seeDashFunction" category="questions">
+                        <button method="seeDash">dash</button>
+                    </div>
                   </div>
             <!-- set dafult navigation html -->
             <ul>';

@@ -26,8 +26,6 @@
             this.saveQuestionsData = '/trivia/admin/ajaxCall/saveQuestionsData.php';
             // add group path
             this.addGroupPath = '/trivia/admin/ajaxCall/addGroup.php';
-            // validate group name
-            this.validateNewGroupName = '/trivia/admin/ajaxCall/validateNewGroupName.php';
             // save group path
             this.saveThisGroup = '/trivia/admin/ajaxCall/saveThisGroup.php';
         }// end constructor()
@@ -85,160 +83,9 @@
                             // end region set a set of actions
                         }// end click()
                     })// end on()
-                    // set action for select container
-                    groupSelector.on({
-                        change: function() {
-                            // get Add Group value
-                            // get add group attr
-                            let addGroup = $(this).find(':selected').attr('point');
-                            // set add new group  method
-                            addGroup === 'true'
-                                ? moduleBuild.addGroup(object, qInpupt, this)
-                                : ''
-                        }// end change()
-                    })// end On()
                 })// end each()
             })// end each()
         }// setModuleData()
-        // set add group functionality
-        addGroup(object, qInpupt, that) {
-            // build add group container
-            this.addGroupBuilder(object);
-            // get popup container
-            let popup = $(object).find('.questionBodyaddGroup');
-            // get close button
-            let close = popup.find('.closePopupContainer span');
-            // save new group
-            this.saveGroup(popup, qInpupt, popup, that);
-            // set action to close the popuP
-            close.on({
-                click: function() {
-                    // close popup
-                    popup.remove();
-                }// end click()s
-            })// end On()
-        }// end addGroup()
-        // save group
-        saveGroup(object, qInpupt, popup, that) {
-            // get submit button
-            let submit = $(object).find('.save');
-            // get error container
-            let error = $(object).find('.errorCode');
-            // get add gruop input
-            let validateGroupInput = $(object).find('.coverUp input');
-            // validate input for double entries
-            validateGroupInput.on({
-                keyup: function() {
-                    // get value
-                    let groupNewValue = $(this).val();
-                    // set data
-                    let dataSet = new FormData();
-                    dataSet.append('value', groupNewValue);
-                    // validate input
-                    let validationConfrim = moduleBuild.ajaxCall(dataSet, moduleBuild.validateNewGroupName);
-                    // set actions
-                    if (validationConfrim.trim() !== 'true') {
-                        // hide submit
-                        submit.hide();
-                        // show error code
-                        error.html(validationConfrim.trim());
-                        // shake the parent a bit
-                        $(object).effect('shake', 'fast');
-                    } else {
-                        // hide submit
-                        submit.show();
-                        // show error code
-                        error.html('');
-                    }// end if
-                }// end keyup()
-            })// end On()
-            // validate on the add group module
-            submit.on({
-                click: function() {
-                    // get input
-                    let input = $(object).find('input[type=text]');
-                    // set vs unset
-                    if (input.val() !== '') {
-                        // return validation
-                        moduleBuild.afterSaveGroup(input.val(), qInpupt, popup);
-                        // remove add group module
-                        $(that).parent().parent().find('.questionBodyaddGroup').remove();
-                    } else {
-                        // show error code
-                        error.html(moduleBuild.requiredInput);
-                        // shake the parent a bit
-                        $(object).effect('shake', 'fast');
-                    }// end if
-                }// end click()
-            })// end On()
-        }// end saveGroup()
-        // method update current slect with a new value
-        afterSaveGroup(value, qInpupt, popup) {
-            // save / update / set new group
-            // prepare value to e sent to the back end
-            let formattedValues = new FormData();
-            formattedValues.append('groupName', value);
-            let saveCofirm = this.ajaxCall(formattedValues, this.saveThisGroup);
-            saveCofirm.trim() === 'true'
-                ? console.log('%cnew group ' + value + ' added', 'color: lightgreen')
-                : '';
-            // find selected option
-            let selected = $(qInpupt).find(':selected');
-            // set selected to current value
-            $(selected).val(value);
-            $(selected).text(value);
-            popup.hide('fade', {direction: 'top'}, 'fast');
-        }// end afterSaveGroup()
-        // build add group container
-        addGroupBuilder(object) {
-            // build add group container
-            // get parent container
-            let parent = $(object);
-            // parent ct
-            let parentGroupContainer = document.createElement('div');
-            parentGroupContainer.className = 'questionBodyaddGroup';
-            // close button container
-            let close = document.createElement('div');
-            close.className = 'closePopupContainer';
-            // popup close button
-            let closeButton = document.createElement('span');
-            let closeButtonWording = document.createTextNode('X');
-            closeButton.append(closeButtonWording);
-            // build close button
-            close.append(closeButton);
-            // cover up container
-            let coverUp = document.createElement('div');
-            coverUp.className = 'coverUp';
-            // label + wording
-            let lable = document.createElement('label');
-            let lableWording = document.createTextNode(this.addGroupWording);
-            lable.append(lableWording);
-            // error container
-            let error = document.createElement('span');
-            error.className = 'errorCode';
-            // input
-            let inputCT = document.createElement('input');
-            inputCT.type = 'text';
-            inputCT.name = 'newGroup';
-            inputCT.placeholder = this.containerPlaceholder;
-            // button container
-            let button = document.createElement('div');
-            button.className = 'winner';
-            // button
-            let saveButton = document.createElement('button');
-            saveButton.className = 'save';
-            // button wording
-            let buttonBody = document.createTextNode(this.saveButtonWording);
-            saveButton.append(buttonBody);
-            // build button
-            button.append(saveButton);
-            // cover up
-            coverUp.append(lable, error, inputCT, button);
-            // add to the container
-            parentGroupContainer.append(close, coverUp);
-            // add to the parent container
-            return parent.append(parentGroupContainer);
-        }// end addGroupBuilder()
         // validate inputs
         validate() {
             // validate module
@@ -264,7 +111,13 @@
                             // call default navigation to update the questions tree in the navigation
                             moduleBuild.buildDefaultNavigation('questions');
                             // call default dash container to refresh the page + header wording
-                            moduleBuild.buildContainer(moduleBuild.editQuestionWording, '');
+                            // get the question container data
+                            let dataSet = new FormData();
+                            dataSet.append('category', 'questions');
+                            // returned
+                            let returnedData = buildNavigation.ajaxCall(dataSet, buildNavigation.containerBuilder);
+                            // call defaul retunr conatiner
+                            buildNavigation.buildContainer('questions', returnedData);
                             // show confirmation
                             moduleBuild.actionConfirm('saved');
                         }// end if

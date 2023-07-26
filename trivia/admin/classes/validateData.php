@@ -17,18 +17,5 @@
         const GROUP_QUESTION_ERROR_WORDING = 'the group name is in the system';
         // endregion
         // region class methods
-        public function validateGroupName($post) {
-            // query
-            $query = 'select `group`
-                        from `' . self::QUESTION_GROUP_TABLE . '`
-                        where `group` = :groupName';
-            // prepare & run
-            $stmt = $this->connect()->prepare($query);
-            $stmt->execute([':groupName' => $post['value']]);
-            // return true if set or error message if not set
-            echo empty($stmt->fetch(PDO::FETCH_ASSOC)) === true
-                ? 'true'
-                : self::GROUP_QUESTION_ERROR_WORDING;
-        }// end validateGroupName()
         // endregion
     }// end validateData{}

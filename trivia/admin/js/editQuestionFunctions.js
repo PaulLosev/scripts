@@ -4,6 +4,8 @@
     class editQuestionFunctions extends projectNavigation {
         // region class methods
         questionFunctions() {
+            // return to the category dash
+            this.returnToDash();
             // set add question method
             this.addQuestion();
             // set edit question method
@@ -13,15 +15,52 @@
             // back button functionality
             this.backButtonFunctionality();
         }// end questionFunctions()
+        // return to category dash
+        returnToDash() {
+            // get dash button
+            let returnDashButton = this.navigationReturn.find('.seeDashFunction button');
+            // set button as active
+            returnDashButton.addClass('activeAddButton');
+            // set actions
+            returnDashButton.on({
+                click: function() {
+                    // disable active class from all li
+                    let lee = questionWork.navigationReturn.find('li').removeClass('navigationActive');
+                    // set button as active
+                    returnDashButton.addClass('activeAddButton');
+                    // remove active class from add question button
+                    // get add question trigger
+                    let addQuestion = questionWork.navigationReturn.find('.addQuestionContainer button');
+                    addQuestion.removeClass('activeAddButton');
+                    // get category from the parent
+                    let category = returnDashButton.parent().attr('category');
+                    // get the question container data
+                    let dataSet = new FormData();
+                    dataSet.append('category', category);
+                    // returned
+                    let returnedData = questionWork.ajaxCall(dataSet, questionWork.containerBuilder);
+                    // call defaul retunr conatiner
+                    questionWork.buildContainer(category, returnedData);
+                }// end click()
+            })// end On()
+        }// end returnToDash()
         // method calls for add new question method
         addQuestion() {
             // get add question trigger
-            let addQuestion = this.navigationReturn.find('.addQuestionContainer');
+            let addQuestion = this.navigationReturn.find('.addQuestionContainer button');
             // set actions
             addQuestion.on({
                 click: function() {
                     console.log('add call');
-                    $(this).find('button').addClass('activeAddButton');
+                    // disable active class from all li
+                    let lee = questionWork.navigationReturn.find('li').removeClass('navigationActive');
+                    // set current button as active
+                    $(this).addClass('activeAddButton');
+                    // remove active class from dash button
+                    // get dash button
+                    let returnDashButton = questionWork.navigationReturn.find('.seeDashFunction button');
+                    // set button as active
+                    returnDashButton.removeClass('activeAddButton');
                     // set method namr
                     let category = new FormData();
                     // add method
@@ -49,6 +88,10 @@
                 trigger.on({
                     click: function() {
                         console.log('edit call');
+                        // get dash button
+                        let returnDashButton = questionWork.navigationReturn.find('.seeDashFunction button');
+                        // set button as active
+                        returnDashButton.removeClass('activeAddButton');
                         // set item highlights
                         questionWork.navigationReturn.find('.addQuestionContainer button').removeClass('activeAddButton');
                         allQuestions.find('li').removeClass('navigationActive')
@@ -81,7 +124,13 @@
                                 // call default navigation to update the questions tree in the navigation
                                 questionWork.buildDefaultNavigation('questions');
                                 // call default dash container to refresh the page + header wording
-                                questionWork.buildContainer(questionWork.editQuestionWording, '');
+                                // get the question container data
+                                let dataSet = new FormData();
+                                dataSet.append('category', 'questions');
+                                // returned
+                                let returnedData = questionWork.ajaxCall(dataSet, questionWork.containerBuilder);
+                                // call defaul retunr conatiner
+                                questionWork.buildContainer('questions', returnedData);
                                 // show confirmation
                                 questionWork.actionConfirm('deleted');
                             }// end if
@@ -93,12 +142,12 @@
         // back button on the questions tab functionality
         backButtonFunctionality() {
             // get the back button
-            let back = $(buildNavigation.navigationReturn).find('#backButton');
+            let back = $(questionWork.navigationReturn).find('#backButton');
             // call default navigation
             back.on({
                 click: function() {
                     // call default navigation
-                    buildNavigation.buildNavModule();
+                    questionWork.buildNavModule();
                 }// end click()
             })// end on
         }// end backButtonFunctionality()

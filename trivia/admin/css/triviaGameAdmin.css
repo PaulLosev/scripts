@@ -124,7 +124,7 @@ html, body {
     height: auto;
     padding: 1vw;
     margin: .3vw;
-    border: 1px solid #444961;
+    background: #444961;
     border-radius: 5px;
 }
 /* returned container dash */
@@ -177,6 +177,10 @@ html, body {
     font: left;
 }
 
+.navigationControlsContainer div {
+    margin: 0 .1vw;
+}
+
 .navigationControlsContainer div span {
     position: relative;
     left: 0vw;
@@ -188,16 +192,29 @@ html, body {
     border-bottom-right-radius: 10px;
 }
 
-.addQuestionContainer {
+.seeDashFunction {
     position: relative;
-    width: 97%;
+    width: auto;
     height: auto;
-    float: left;
+    float: right;
     display: flex;
     justify-content: end;
     align-items: end;
 }
 
+.addNewGroupToDropdown,
+.addQuestionContainer {
+    position: relative;
+    width: auto;
+    height: auto;
+    float: right;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.addNewGroupToDropdown button,
+.seeDashFunction button,
 .addQuestionContainer button {
     border: none;
     background: none;
@@ -273,6 +290,8 @@ html, body {
     transition: .2s;
 }
 
+.addNewGroupToDropdown button:hover,
+.seeDashFunction button:hover,
 .addQuestionContainer button:hover {
     background: #D6BD6B;
     border: 1px solid #D6BD6B;
@@ -294,6 +313,7 @@ html, body {
     color: #D6BD6B!important;
 }
 
+.questionBody [type=image]:hover,
 #deleteQuestion input:hover {
     transform: scale(1.6);
 }
@@ -345,6 +365,7 @@ html, body {
     margin: .4vw 0;
 }
 
+.quetionsGroupCategories h2,
 .questionContainer h2 {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
@@ -365,6 +386,7 @@ html, body {
 }
 
 .questionBody .errorCode {
+    font-family: 'Comfortaa', sans-serif;
     position: relative;
     width: 78%;
     float: right;
@@ -372,7 +394,7 @@ html, body {
     height: auto;
     color: pink;
     font-size: .5vw;
-    font-weight: 800;
+    font-weight: 300;
 }
 
 .questionBody {
@@ -417,6 +439,23 @@ html, body {
     float: right;
     height: auto;
     margin: .2vw 0;
+}
+
+.deleteCategoryQuestions {
+    position: relative;
+    float: right;
+    width: 2.5vw;
+    height: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.questionBody [type=image] {
+    width: 1.5vw;
+    height: 1.5vw;
+    transition: .2s;
+    cursor: pointer;
 }
 
 .saveMethod {

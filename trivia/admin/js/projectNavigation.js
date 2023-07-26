@@ -39,8 +39,6 @@
         navigationFunctionality() {
             // get all navigation items
             let menuData = this.navigationReturn.find('li');
-            // set first item active
-            menuData.first().addClass('navigationActive');
             // set actions
             menuData.each((num, object) => {
                 // that data
@@ -63,6 +61,8 @@
         }// end navigationFunctionality()
         // method sets default navigation functionality
         defaulNavigationMethod(that, menuData, category) {
+            // set first item active
+            menuData.first().addClass('navigationActive');
             // default navigation functionality
             that.on({
                 click: function() {

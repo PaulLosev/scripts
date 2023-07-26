@@ -45,7 +45,7 @@ class html {
                             <div class="afterWraperContainer">
                                 <div class="sideBarContainer">
                                     <div class="cmsLogtypeConatiner">
-                                        <span>trivia</span>
+                                        <span>cms</span>
                                     </div>
                                     <div class="dynamicMenuContainer">
                                           <!-- ./ ajax return -->

@@ -109,7 +109,6 @@
          * @param data array
          */
         buildContainer(option, data) {
-            console.log('%c' + option + ' :tracing build container method', 'color: pink');
             // console.log(data);
             // set wraper
             let wraper = document.createElement('div');
@@ -129,7 +128,10 @@
             // build container
             wraper.append(topContainer, returnDataContainer);
             // build module
-            this.mainReturn.html(wraper).effect('fade', 'fast');
+            this.mainReturn.effect('fade', 'fast', () => {
+                // after effect done, set data
+                this.mainReturn.html(wraper);
+            })// end effect()
         }// end buildContainer()
         // method calls backend for data by eid
         ajaxCall(data, path) {

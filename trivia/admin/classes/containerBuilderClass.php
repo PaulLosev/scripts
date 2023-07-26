@@ -51,12 +51,12 @@
                         <h2>GROUPS (in prog)</h2>
                         <div class="addNewGroupToDropdown">
                             <button>add group</button>
-                        </div>';
-
+                        </div>
+                        <div class="groupsContainerBody">';
                         // get array with all groups
                         foreach($this->getAllGroups() as $value) {
                             // build groups module
-                            echo '<div class="questionBody" qid="' . $value['id'] . '">
+                            echo '<div class="questionBody" qid="' . $value['id'] . '" currentValue="' . $value['group'] . '">
                                     <span class="errorCode">*cannot be empty</span>
                                     <input type="text" name="group" value="' . $value['group'] . '" placeholder="' . self::INPUT_PLACEHOLDER . '" />
                                     <div class="deleteCategoryQuestions">
@@ -64,8 +64,9 @@
                                     </div>
                                   </div>' . PHP_EOL;
                         }// end foreach()
-            // html
-            echo '</div>
+                 // html
+                 echo '</div>
+                    </div>
                  </div>
                  <!-- ./ group logic connect -->
                  <script src="/trivia/admin/js/groupLogicFunctionality.js?' . time(). '"></script>' . PHP_EOL;

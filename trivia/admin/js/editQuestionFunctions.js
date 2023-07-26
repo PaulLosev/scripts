@@ -51,7 +51,7 @@
             // set actions
             addQuestion.on({
                 click: function() {
-                    console.log('add call');
+                    console.log('addQuestion');
                     // disable active class from all li
                     let lee = questionWork.navigationReturn.find('li').removeClass('navigationActive');
                     // set current button as active
@@ -74,6 +74,7 @@
         }// end addQuestion()
         // methods calls for edit question method
         editQuestion() {
+            console.log('editQuestion');
             // get all questions
             let allQuestions = this.navigationReturn.find('.questionBodyContainer');
             // set actions

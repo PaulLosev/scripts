@@ -107,6 +107,28 @@ html, body {
     float: right;
 }
 
+/* returned container dash */
+.secondLevelParent {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: auto;
+    float: left;
+}
+
+.quetionsGroupCategories {
+    position: relative;
+    width: 20vw;
+    height: auto;
+    padding: 1vw;
+    margin: .3vw;
+    border: 1px solid #444961;
+    border-radius: 5px;
+}
+/* returned container dash */
+
 .dynamicMenuContainer {
     position: relative;
     width: 100%;

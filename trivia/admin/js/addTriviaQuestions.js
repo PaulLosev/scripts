@@ -25,7 +25,11 @@
             // save path
             this.saveQuestionsData = '/trivia/admin/ajaxCall/saveQuestionsData.php';
             // add group path
-            this.addGroupPath = '/trivia/admin/ajaxCall/addGroup.php'
+            this.addGroupPath = '/trivia/admin/ajaxCall/addGroup.php';
+            // validate group name
+            this.validateNewGroupName = '/trivia/admin/ajaxCall/validateNewGroupName.php';
+            // save group path
+            this.saveThisGroup = '/trivia/admin/ajaxCall/saveThisGroup.php';
         }// end constructor()
         //
         questionMode() {
@@ -106,11 +110,11 @@
             let close = popup.find('.closePopupContainer span');
             // save new group
             this.saveGroup(popup, qInpupt, popup, that);
-            // set action to close the popup
+            // set action to close the popuP
             close.on({
                 click: function() {
                     // close popup
-                    popup.hide('fade', {direction: 'top'}, 'fast');
+                    popup.remove();
                 }// end click()s
             })// end On()
         }// end addGroup()
@@ -120,7 +124,35 @@
             let submit = $(object).find('.save');
             // get error container
             let error = $(object).find('.errorCode');
-            // validate
+            // get add gruop input
+            let validateGroupInput = $(object).find('.coverUp input');
+            // validate input for double entries
+            validateGroupInput.on({
+                keyup: function() {
+                    // get value
+                    let groupNewValue = $(this).val();
+                    // set data
+                    let dataSet = new FormData();
+                    dataSet.append('value', groupNewValue);
+                    // validate input
+                    let validationConfrim = moduleBuild.ajaxCall(dataSet, moduleBuild.validateNewGroupName);
+                    // set actions
+                    if (validationConfrim.trim() !== 'true') {
+                        // hide submit
+                        submit.hide();
+                        // show error code
+                        error.html(validationConfrim.trim());
+                        // shake the parent a bit
+                        $(object).effect('shake', 'fast');
+                    } else {
+                        // hide submit
+                        submit.show();
+                        // show error code
+                        error.html('');
+                    }// end if
+                }// end keyup()
+            })// end On()
+            // validate on the add group module
             submit.on({
                 click: function() {
                     // get input
@@ -142,13 +174,20 @@
         }// end saveGroup()
         // method update current slect with a new value
         afterSaveGroup(value, qInpupt, popup) {
+            // save / update / set new group
+            // prepare value to e sent to the back end
+            let formattedValues = new FormData();
+            formattedValues.append('groupName', value);
+            let saveCofirm = this.ajaxCall(formattedValues, this.saveThisGroup);
+            saveCofirm.trim() === 'true'
+                ? console.log('%cnew group ' + value + ' added', 'color: lightgreen')
+                : '';
             // find selected option
             let selected = $(qInpupt).find(':selected');
             // set selected to current value
             $(selected).val(value);
             $(selected).text(value);
             popup.hide('fade', {direction: 'top'}, 'fast');
-            // build add group container
         }// end afterSaveGroup()
         // build add group container
         addGroupBuilder(object) {
@@ -218,7 +257,7 @@
                             : ''
 
                         // track console statuses
-                        console.log(savedItem);
+                        // console.log(savedItem);
 
                         // set acions
                         if (savedItem.trim() === 'true') {

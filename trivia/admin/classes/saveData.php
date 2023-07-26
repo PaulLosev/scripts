@@ -15,7 +15,24 @@
         // region class const
         const USER_TABLE = 'trivUsers';
         const QUESTIONS_TABLE = 'triviaQuestions';
+        const TRIVIA_QUESTIONS_GROUPS = 'trivQuestionsGroups';
         // endregion
+        public function saveNewGroup($post) {
+            // query
+            $query = 'insert into `' . self::TRIVIA_QUESTIONS_GROUPS . '`
+                                 (`group`) 
+                          values (:group)';
+            // prepare & run
+            $stmt = $this->connect()->prepare($query);
+            echo $stmt->execute([':group' => $post['groupName']]) === true
+                ? 'true'
+                : 'false';
+        }// end saveNewGroup()
+        /**
+         * method sets save method & edit method
+         * @param $post
+         * @return void
+         */
         public function saveMethod($post) {
             // format data
             $data = $this->formatData($post);
@@ -51,7 +68,7 @@
                 ':answerTwo' => $data[4],
                 ':answerThree' => $data[5],
                 ':winnerAnswer' => $data[6],
-                ':group' => $data[1],
+                ':group' => strtolower($data[1]),
             ];
             // prepare & run
             $stmt = $this->connect()->prepare($query);
@@ -82,7 +99,7 @@
                 ':answerTwo' => $data[4],
                 ':answerThree' => $data[5],
                 ':winnerAnswer' => $data[6],
-                ':group' => $data[1],
+                ':group' => strtolower($data[1]),
                 ':qid' => $data[0],
             ];
             // prepare & run

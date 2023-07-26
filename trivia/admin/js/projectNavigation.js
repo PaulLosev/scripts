@@ -16,8 +16,14 @@
             this.navigationBuilder = '/trivia/admin/ajaxCall/buildNavigation.php';
             // add question module call
             this.addQuestionPath = '/trivia/admin/ajaxCall/addQuestion.php'
+            // delete trivia question pather
+            this.deleteTriviaQuestion = '/trivia/admin/ajaxCall/deleteTriviaQuestion.php';
+            // set build container script path
+            this.containerBuilder = '/trivia/admin/ajaxCall/buildContainer.php'
             // edit question wording
             this.editQuestionWording = 'edit question';
+            // delete button confirm wording
+            this.deleteItemWording = 'Warning! This action cannot be undone!';
         }// end constructor()
         // start navigation build
         // also workss as a reset mehod
@@ -76,17 +82,13 @@
                 click: function () {
                     // build defaul navigation
                     buildNavigation.buildDefaultNavigation(category);
+                    // get the question container data
+                    let dataSet = new FormData();
+                    dataSet.append('category', category);
+                    // returned
+                    let returnedData = buildNavigation.ajaxCall(dataSet, buildNavigation.containerBuilder);
                     // call defaul retunr conatiner
-                    buildNavigation.buildContainer(category, '');
-                    // get the back button
-                    let back = $(buildNavigation.navigationReturn).find('#backButton');
-                    // call default navigation
-                    back.on({
-                        click: function() {
-                            // call default navigation
-                            buildNavigation.buildNavModule();
-                        }// end click()
-                    })// end on
+                    buildNavigation.buildContainer(category, returnedData);
                 }// end click()
             })// end on()
         }// end navigationMethodVariator()

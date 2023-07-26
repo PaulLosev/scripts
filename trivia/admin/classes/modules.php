@@ -72,6 +72,18 @@
             ];
         }// end addQuestion()
         /**
+         * method bulds the group dropdown options
+         * @return void
+         */
+        public function setGroupValues($selectedGroup) {
+            // build drop down with groups
+            foreach ($this->getQuestionGroups() as $group) {
+                // selected
+                $selected = strtolower($group['group']) === $selectedGroup ? 'selected' : 'none';
+                echo '<option value="' . strtolower($group['group']) . '" ' . $selected . '>' . ucfirst($group['group']) . '</option>';
+            }// end foreach()
+        }// end setGroupValues()
+        /**
          * method builds question module
          */
         public function triviaQuestions($post) {
@@ -97,15 +109,10 @@
                                      <span class="errorCode"></span>
                                      <select name="' . $data['group'] . '">
                                          <option value="">-none-</option>';
-                                         // build drop down with groups
-                                         foreach ($this->getQuestionGroups() as $group) {
-                                             // selected
-                                             $selected = $group['group'] === $data['group'] ? 'selected' : 'none';
-                                             echo '<option value="' . strtolower($group['group']) . '" ' . $selected . '>' . ucfirst($group['group']) . '</option>';
-                                         }// end foreach()
-                           echo '<option value=""></option>
-                                 <option value="" point="true">' . self::ADD_GROUP . '</option>
-                                      </select>
+                                    // build options
+                                    $this->setGroupValues($data['group']);
+                               // html
+                               echo '</select>
                                  </div>';
                                 // remove keys
                                 // unset data sets to build questions

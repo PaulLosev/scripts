@@ -67,6 +67,8 @@
                         let returnedData = groups.ajaxCall(flushContainer, groups.containerBuilder);
                         // call defaul retunr conatiner
                         groups.buildContainer(groups.categoryOption, returnedData);
+                        // call confirm
+                        groups.actionConfirm('deleted');
                     }// end click()
                 })// end On()
             })// end each()
@@ -87,6 +89,8 @@
                     let returnedData = groups.ajaxCall(dataSet, groups.containerBuilder);
                     // call defaul retunr conatiner
                     groups.buildContainer(groups.categoryOption, returnedData);
+                    // call confirm
+                    groups.actionConfirm('added');
                 }// end click
             })// end On()
         }// end addGroup()

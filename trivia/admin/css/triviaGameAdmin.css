@@ -26,6 +26,10 @@ html, body {
     color: var(--box-color);
 }
 
+input, select {
+    outline: none;
+}
+
 #projectReturnContainer {
     position: relative;
     float: left;
@@ -84,20 +88,44 @@ html, body {
     border: none;
 }
 
+.returnContainerHeadline p {
+    position: relative;
+    margin-left: 1vw;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    width: auto;
+    padding: 0 .4vw;
+    height: 100%;
+    float: left;
+    font-size: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #444961;
+}
+
 .returnContainerHeadline span {
     position: relative;
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     width: auto;
     height: 100%;
-    float: right;
+    float: left;
     font-size: 1vw;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 0 2vw;
+    text-transform: uppercase;
+    padding: 0 .7vw;
     color: rgba(255,255,255,.4);
+}
+
+.returnContainerHeadline span:before {
+    content: '/';
+    position: absolute;
+    left: 0;
 }
 
 .returnDataContainer {

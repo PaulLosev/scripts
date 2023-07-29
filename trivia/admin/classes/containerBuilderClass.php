@@ -33,7 +33,8 @@
         public function getAllGroups(): array {
             // query
             $query = 'select *
-                        from `' . self::TRIVIA_QUESTIONS_GROUPS . '`';
+                        from `' . self::TRIVIA_QUESTIONS_GROUPS . '`
+                        order by `group` asc';
             // prepare & run
             $stmt = $this->connect()->prepare($query);
             $stmt->execute();

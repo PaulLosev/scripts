@@ -111,15 +111,20 @@
          * @param data array
          */
         buildContainer(option, data) {
+            console.log('buildContainer of projectNavigation liner 114');
             // console.log(data);
             // set wraper
             let wraper = document.createElement('div');
             // set parent container
             let topContainer = document.createElement('div');
             topContainer.className = 'returnContainerHeadline';
+            // set dash header
+            let dashHeader = document.createElement('p');
+            let dashHeaderWording = document.createTextNode('CONSOLE');
+            dashHeader.append(dashHeaderWording);
             // set headline
             let headline = document.createElement('span');
-            topContainer.append(headline);
+            topContainer.append(dashHeader, headline);
             // text node
             let textNode = document.createTextNode(option);
             headline.append(textNode);
@@ -150,6 +155,7 @@
         // to call, set it after TRUE return on each action method
         // with its own wording
         actionConfirm(wording) {
+            console.log('actionConfirm of projectNavigtion liner 158');
             // build popup
             let popupParent = document.createElement('div');
             popupParent.className = 'confirmationalPopup';

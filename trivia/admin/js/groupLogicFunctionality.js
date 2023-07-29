@@ -66,7 +66,7 @@
                         flushContainer.append('category', deleteGroup);
                         let returnedData = groups.ajaxCall(flushContainer, groups.containerBuilder);
                         // call defaul retunr conatiner
-                        buildNavigation.buildContainer(groups.categoryOption, returnedData);
+                        groups.buildContainer(groups.categoryOption, returnedData);
                     }// end click()
                 })// end On()
             })// end each()
@@ -76,6 +76,7 @@
             // set actions
             this.addGroup.on({
                 click: function() {
+                    console.log('addGroupModule line 49 of groupLogicFunctionality class');
                     // return new container
                     // save the container
                     groups.ajaxCall('', groups.addGroupContainer);

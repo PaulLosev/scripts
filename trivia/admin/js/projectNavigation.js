@@ -24,6 +24,8 @@
             this.editQuestionWording = 'edit question';
             // delete button confirm wording
             this.deleteItemWording = 'Warning! This action cannot be undone!';
+            // set confirm popup time variable
+            this.timeVriable = 3000;
         }// end constructor()
         // start navigation build
         // also workss as a reset mehod
@@ -164,7 +166,7 @@
             $(popupFunctioning).show('drop', {direction: 'right'}, 'fast', (() => {
                 setTimeout(() => {
                       $(popupFunctioning).hide('drop', {direction: 'right'}, 'fast');
-                }, 3000);
+                }, buildNavigation.timeVriable);
             }));
         }// end actionConfirm()
         // endregion

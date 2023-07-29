@@ -24,6 +24,7 @@
             // set actions
             returnDashButton.on({
                 click: function() {
+                    console.log('call dash of editQuestionFunctions line 27');
                     // disable active class from all li
                     let lee = questionWork.navigationReturn.find('li').removeClass('navigationActive');
                     // set button as active
@@ -51,7 +52,7 @@
             // set actions
             addQuestion.on({
                 click: function() {
-                    console.log('addQuestion');
+                    console.log('addQuestion of editQuestionFunctions line 55');
                     // disable active class from all li
                     let lee = questionWork.navigationReturn.find('li').removeClass('navigationActive');
                     // set current button as active
@@ -74,7 +75,7 @@
         }// end addQuestion()
         // methods calls for edit question method
         editQuestion() {
-            console.log('editQuestion');
+            console.log('editQuestion of editQuestionFunctions line 78');
             // get all questions
             let allQuestions = this.navigationReturn.find('.questionBodyContainer');
             // set actions
@@ -88,7 +89,7 @@
                 // call edit question method
                 trigger.on({
                     click: function() {
-                        console.log('edit call');
+                        console.log('edit call of editQuestionFunctions line 92');
                         // get dash button
                         let returnDashButton = questionWork.navigationReturn.find('.seeDashFunction button');
                         // set button as active

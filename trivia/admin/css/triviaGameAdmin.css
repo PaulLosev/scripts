@@ -69,6 +69,7 @@ html, body {
     margin-right: .7vw;
     background: rgba(215, 219, 221, .2);
     border-radius: 5px;
+    overflow: auto;
 }
 
 .returnContainerHeadline {

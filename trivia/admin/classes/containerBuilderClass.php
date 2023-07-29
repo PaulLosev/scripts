@@ -47,7 +47,7 @@
         public function buildQuestionDash() {
             // HTML
             echo '<div class="secondLevelParent">
-                    <div class="quetionsGroupCategories">
+                    <div class="quetionsGroupCategories" category="questions">
                         <h2>GROUPS (in prog)</h2>
                         <div class="addNewGroupToDropdown">
                             <button>add group</button>
@@ -57,7 +57,7 @@
                         foreach($this->getAllGroups() as $value) {
                             // build groups module
                             echo '<div class="questionBody" qid="' . $value['id'] . '" currentValue="' . $value['group'] . '">
-                                    <span class="errorCode">*cannot be empty</span>
+                                    <span class="errorCode"></span>
                                     <input type="text" name="group" value="' . $value['group'] . '" placeholder="' . self::INPUT_PLACEHOLDER . '" />
                                     <div class="deleteCategoryQuestions">
                                         <input type="image" src="/trivia/admin/img/delete.png" title="delete question"></input>
@@ -71,5 +71,21 @@
                  <!-- ./ group logic connect -->
                  <script src="/trivia/admin/js/groupLogicFunctionality.js?' . time(). '"></script>' . PHP_EOL;
         }// end buildQuestionDash()
+        /**
+         * method add a new row for a new group name
+         * @return void
+         */
+        public function returnNewGroup() {
+            // set a new line in the table
+            // query
+            $query = 'insert into `' . self::TRIVIA_QUESTIONS_GROUPS . '` 
+                                 (`group`) 
+                           value ("")';
+            // prepare and run
+            $stmt = $this->connect()->prepare($query);
+            echo $stmt->execute() === true
+                ? 'true'
+                : 'false';
+        }// end returnNewGroup()
         // endregion
     }// end containerBuilderClass{}

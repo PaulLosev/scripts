@@ -14,6 +14,7 @@
         // region class const
         const USER_TABLE = 'trivUsers';
         const QUESTIONS_TABLE = 'triviaQuestions';
+        const TRIVIA_QUESTIONS_GROUPS = 'trivQuestionsGroups';
         // endregion
         // region class methods
         /**
@@ -32,5 +33,20 @@
                 ? 'true'
                 : 'false';
         }// end deleteTrivaQuestion()
+        /**
+         * method delete question group by qid
+         * @param $post
+         * @return void
+         */
+        public function deleteQuestionGroup($post) {
+            // query
+            $query = 'delete from `' . self::TRIVIA_QUESTIONS_GROUPS . '`
+                            where `id` = :id';
+            // prepare & run
+            $stmt = $this->connect()->prepare($query);
+            echo $stmt->execute([':id' => $post['qid']]) === true
+                ? 'questions'
+                : 'failed to delete group';
+        }// end deleteQuestionGroup()
         // endregion
     }// end deleteData()

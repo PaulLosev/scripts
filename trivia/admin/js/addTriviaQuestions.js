@@ -107,7 +107,7 @@
                         // console.log(savedItem);
 
                         // set acions
-                        if (savedItem.trim() === 'true') {
+                        if (savedItem !== undefined && savedItem.trim() === 'true') {
                             // call default navigation to update the questions tree in the navigation
                             moduleBuild.buildDefaultNavigation('questions');
                             // call default dash container to refresh the page + header wording
@@ -134,6 +134,8 @@
             this.data = [];
             // get all inputs + select
             let input = $(dataSet).find('input, select');
+            // get group category id
+            let gid = input.find(':selected').attr('gid');
             // set logic + actions
             $(input).each((num, object) => {
                 // get error container
@@ -147,7 +149,7 @@
                 // return validation
                 value.trim() === ''
                     ? error.html(moduleBuild.requiredInput).show()
-                    : moduleBuild.pushValue(value, qid, rightAnswer, error);
+                    : moduleBuild.pushValue(value, qid, rightAnswer, error, gid);
             });
         }// end validateInput()
         // method validates right answer buttons
@@ -186,11 +188,11 @@
          * @param value
          * @param error
          */
-        pushValue(value, qid, rightAnswer, error) {
+        pushValue(value, qid, rightAnswer, error, gid) {
             // hide error
             $(error).html('').hide();
             // push value
-            this.data.push({value: value, qid: qid, winner: rightAnswer});
+            this.data.push({value: value, qid: qid, winner: rightAnswer, gid: gid});
         }// end pushValue()
         /**
          * presave method validates all inputs returned validated

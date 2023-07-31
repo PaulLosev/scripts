@@ -18,6 +18,8 @@
             this.addGroupContainer = '/trivia/admin/ajaxCall/addGroup.php';
             // set path to delete group
             this.deleteGruopPath = '/trivia/admin/ajaxCall/deleteGroup.php';
+            // set update group pather
+            this.updateGroupPath = '/trivia/admin/ajaxCall/updateGroup.php';
             // set category
             this.transmitCategory = 'add group';
             // error code empty
@@ -44,10 +46,15 @@
                 // set update & add actions
                 actionOnValue.on({
                     keyup: function() {
-                        errorContainer.text(this.value === '' ? groups.errorCodeEmpty : '');
-                        console.log(this.value);
-                        console.log(qid);
                         console.log('line 49 of groupLogicFunctionality class');
+                        errorContainer.text(this.value === '' ? groups.errorCodeEmpty : '');
+                        // set dataSet
+                        let updateData = new FormData();
+                        updateData.append('value', this.value);
+                        updateData.append('qid', qid);
+                        // call update method
+                        let updateConfirm = groups.ajaxCall(updateData, groups.updateGroupPath);
+                        console.log(updateConfirm);
                     }// end keyup()
                 })// end On()
                 // get delete button

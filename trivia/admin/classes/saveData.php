@@ -34,6 +34,7 @@
          * @return void
          */
         public function saveMethod($post) {
+
             // format data
             $data = $this->formatData($post);
             // get methods
@@ -54,13 +55,15 @@
                                      `answerTwo`,
                                      `answerThree`,
                                      `winnerAnswer`,
-                                     `group`)
+                                     `group`,
+                                     `gid`)
                              values (:question, 
                                      :answerOne, 
                                      :answerTwo, 
                                      :answerThree, 
                                      :winnerAnswer, 
-                                     :group)';
+                                     :group,
+                                     :gid)';
             // params
             $params = [
                 ':question' => $data[2],
@@ -69,6 +72,7 @@
                 ':answerThree' => $data[5],
                 ':winnerAnswer' => $data[6],
                 ':group' => strtolower($data[1]),
+                ':gid' => $data[7],
             ];
             // prepare & run
             $stmt = $this->connect()->prepare($query);
@@ -90,7 +94,8 @@
                              `answerTwo` = :answerTwo,
                              `answerThree` = :answerThree,
                              `winnerAnswer` = :winnerAnswer,
-                             `group` = :group 
+                             `group` = :group,
+                             `gid` = :gid
                         where `id` = :qid';
             // params
             $params = [
@@ -101,6 +106,7 @@
                 ':winnerAnswer' => $data[6],
                 ':group' => strtolower($data[1]),
                 ':qid' => $data[0],
+                ':gid' => $data[7],
             ];
             // prepare & run
             $stmt = $this->connect()->prepare($query);
@@ -128,6 +134,8 @@
             }// end foreach()
             // push the winner answer
             $this->dataSet[] = $json[0]->winner;
+            // add gid
+            $this->dataSet[] = $json[0]->gid;
             // return formatted data set
             return $this->dataSet;
         }// end formatData()

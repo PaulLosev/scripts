@@ -47,7 +47,8 @@
          */
         public function getQuestionGroups() {
             // query
-            $query = 'select `group`
+            $query = 'select `id`,
+                             `group`
                         from `' . self::TRIVIA_QUESTIONS_GROUPS . '`
                         order by `group` asc';
             // prepare & run
@@ -81,7 +82,7 @@
             foreach ($this->getQuestionGroups() as $group) {
                 // selected
                 $selected = strtolower($group['group']) === $selectedGroup ? 'selected' : 'none';
-                echo '<option value="' . strtolower($group['group']) . '" ' . $selected . '>' . ucfirst($group['group']) . '</option>';
+                echo '<option value="' . strtolower($group['group']) . '" ' . $selected . ' gid="' . $group['id'] . '">' . ucfirst($group['group']) . '</option>';
             }// end foreach()
         }// end setGroupValues()
         /**
@@ -120,6 +121,7 @@
                                 unset($data['id']);
                                 unset($data['winnerAnswer']);
                                 unset($data['group']);
+                                unset($data['gid']);
                                 // set questions
                                 foreach ($data as $key => $value) {
                                     // assign top answer class to inputs

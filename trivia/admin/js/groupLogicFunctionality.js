@@ -24,6 +24,10 @@
             this.transmitCategory = 'add group';
             // error code empty
             this.errorCodeEmpty = '*cannot be empty';
+            // set delete confrim
+            this.deleteConfirm = 'Deleting the group will result in related to the group questions false. ' +
+                'You\'ll need to update related questions with a new group. Instead, update the group name. ' +
+                'It will be updated to all the group related questions automatically. This action cannot be undone. You want to continue?';
             // set questions category
             this.categoryOption = this.groupContainerParent.attr('category');
         }// end constructor()
@@ -62,20 +66,22 @@
                 // set delete action
                 deleteGroupButton.on({
                     click: function() {
-                        // refresh the module
-                        let dataSet = new FormData();
-                        dataSet.append('qid', qid);
-                        // delete group from the dd table
-                        let deleteGroup = groups.ajaxCall(dataSet, groups.deleteGruopPath);
-                        // returned
-                        // refresh container
-                        let flushContainer = new FormData();
-                        flushContainer.append('category', deleteGroup);
-                        let returnedData = groups.ajaxCall(flushContainer, groups.containerBuilder);
-                        // call defaul retunr conatiner
-                        groups.buildContainer(groups.categoryOption, returnedData);
-                        // call confirm
-                        groups.actionConfirm('deleted');
+                        if (confirm(groups.deleteConfirm) === true) {
+                            // refresh the module
+                            let dataSet = new FormData();
+                            dataSet.append('qid', qid);
+                            // delete group from the dd table
+                            let deleteGroup = groups.ajaxCall(dataSet, groups.deleteGruopPath);
+                            // returned
+                            // refresh container
+                            let flushContainer = new FormData();
+                            flushContainer.append('category', deleteGroup);
+                            let returnedData = groups.ajaxCall(flushContainer, groups.containerBuilder);
+                            // call defaul retunr conatiner
+                            groups.buildContainer(groups.categoryOption, returnedData);
+                            // call confirm
+                            groups.actionConfirm('deleted');
+                        }// end cofirm
                     }// end click()
                 })// end On()
             })// end each()
